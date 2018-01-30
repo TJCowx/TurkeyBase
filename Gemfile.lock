@@ -167,6 +167,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  bcrypt
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
@@ -182,4 +183,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.15.4
+   1.16.1
