@@ -1,4 +1,5 @@
 <%= form_for(:session, url: login_path, :html => {:class => "form-horizontal center"}) do |f| %>
+
     <div class="form-group">
         <%= f.label :user_id %>
         <%= f.text_field :user_id, class: "form-control", placeholder: "Username" %>
