@@ -6,11 +6,13 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
     <%= render 'layouts/header' %>
     <div class="container center" style="padding-left: 10%; padding-right: 10%;">
+        <%= audio_tag('contra-title.mp3', id: 'konami') %>
         <div class="flash-messages">
             <% flash.each do |message_type, message| %>
                 <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
