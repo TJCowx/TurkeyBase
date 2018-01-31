@@ -1,2 +1,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+img.turkey {
+    content:url(turkey.jpg);
+    position: absolute;
+    width:65px;
+    height: 60px;
+}
