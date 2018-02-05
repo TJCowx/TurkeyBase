@@ -1,14 +1,26 @@
-<%= form_for(:session, url: login_path, :html => {:class => "form-horizontal center"}) do |f| %>
+<%=
+  form_for(:session, url: login_path,
+  :html => {:class => "form-horizontal center"}) do |f|
+%>
 
     <div class="form-group">
-        <%= f.label :user_id %>
-        <%= f.text_field :user_id, class: "form-control", placeholder: "Username" %>
+        <%= f.label :user_id, 'Username' %>
+        <%=
+          f.text_field :user_id, class: "form-control",
+          placeholder: "Username"
+        %>
     </div>
 
     <div class="form-group">
         <%= f.label :password %>
-        <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+        <%=
+          f.password_field :password, class: "form-control",
+          placeholder: "Password"
+        %>
     </div>
 
-    <%= f.submit yield(:button_text), class: "btn btn-success", style: "background-color: #2b543b; border-color: black;" %>
+    <%=
+      f.submit yield(:button_text), class: "btn btn-success",
+      style: "background-color: #2b543b; border-color: black; width: 100%;"
+      %>
 <% end %>

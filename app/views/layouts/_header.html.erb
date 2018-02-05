@@ -13,22 +13,63 @@
         </div>  <!-- /navbar-header -->
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <% if logged_in? %>
             <ul class="nav navbar-nav">
-                <% if !logged_in? %>
-                    <li class="link" ><%= link_to "Login", login_path, style: "color: white;" %></li>
-                <% end %>
+              <!-- Dropdown for managing orders -->
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" style="color:white;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  Orders <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Add Order</a></li>
+                  <li><a href="#">Manage Orders</a></li>
+                  <li><a href="#"></a></li>
+                </ul>
+              </li>
+              <% if admin? %>
+                <!-- Dropdown for manage Ordering seasons -->
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" style="color:white;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    Ordering Seasons <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Add Season</a></li>
+                    <li><a href="#">List Season</a></li>
+                  </ul>
+                </li>
 
-                <% if logged_in? %>
-                    <li class="link"><%= link_to "Logout", logout_path, style: "color:white;", method: :delete%></li>
-                    <% if current_user.is_admin? %>
-                        <li class="link">IsAdmin</li>
-                    <% else %>
-                        <li class="link">IsNotAdmin</li>
-                    <% end %>
-                <% else %>
-                    <li class="link">IsNotLoggedIn</li>
-                <% end %>
+                <!-- Dropdown for managing products -->
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" style="color:white;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    Products <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Add Product</a></li>
+                    <li><a href="#">Manage Product</a></li>
+                  </ul>
+                </li>
+
+                <!-- Dropdown menu for managing users -->
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" style="color:white;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    Users <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/new_user">Add User</a></li>
+                    <li><a href="#">Manage Users</a></li>
+                  </ul>
+                </li>
+              <% end %>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="link navbar-right"><%= link_to "Logout", logout_path, style: "color:white;", method: :delete%></li>
+            </ul>
+          <% else %>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="link" ><%= link_to "Login", login_path, style: "color: white;" %></li>
+            </ul>
+          <% end %>
+
         </div>  <!-- /collapse navbar-collapse -->
     </div>  <!-- /container-fluid -->
 </nav>  <!-- /nav -->

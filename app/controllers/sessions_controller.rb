@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
 
       # If user was found and password matches, log them in
       # Otherwise error
-      if @user && @user.authenticate(params[:session][:password])
+      if (@user && @user.authenticate(params[:session][:password]) && @user.login_role)
           # Log the user in
           log_in @user
           # Redirect user to home page with success message

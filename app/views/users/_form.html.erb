@@ -1,0 +1,43 @@
+<%=
+  form_for(:session, url: new_user_path,
+  :html => {:class => "form-horizontal center"}) do |f|
+%>
+
+  <!-- User ID field -->
+  <div class="form-group">
+    <%= f.label :user_id, 'Username' %>
+    <%= f.text_field :user_id, class: "form-control", placeholder: "Username" %>
+  </div>
+
+  <!-- Password field -->
+  <div class="form-group">
+    <%= f.label :password %>
+    <%=
+      f.password_field :password, class: "form-control",
+      placeholder: "Password"
+    %>
+  </div>
+  <!-- Password field -->
+  <div class="form-group">
+    <%= f.label :password_confirm, 'Confirm Password' %>
+    <%=
+      f.password_field :password_confirm, class: "form-control",
+      placeholder: "Confirm Password"
+    %>
+  </div>
+
+  <!-- Admin & Login role checkboxes -->
+  <center>
+    <div class="form-inline">
+      <%= f.label :admin %>
+      <%= f.check_box :admin %>
+      <%= f.label :login_role, style: "padding-left:20px;" %>
+      <%= f.check_box :login_role %>
+    </div>
+  </center>
+
+  <%=
+    f.submit yield(:button_text), class: "btn btn-success",
+    style: "background-color: #2b543b; border-color: black; width:100%;"
+  %>
+<% end %>

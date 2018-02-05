@@ -17,8 +17,7 @@ module SessionsHelper
 
     # Returns true if the current_user is an admin
     def admin?
-        @user = User.find(params[:user_id])
-
+        @user = current_user.is_admin?
     end
 
     # Logs out the current user
@@ -27,8 +26,4 @@ module SessionsHelper
         @current_user = nil
     end
 
-    private
-        def admin?
-
-        end
 end

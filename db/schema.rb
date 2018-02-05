@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180130161721) do
+ActiveRecord::Schema.define(version: 20180205203632) do
 
   create_table "users", force: :cascade do |t|
     t.string "user_id"
     t.boolean "is_admin"
     t.string "password_digest"
+    t.boolean "login_role"
     t.index ["user_id"], name: "index_users_on_user_id", unique: true
   end
 
