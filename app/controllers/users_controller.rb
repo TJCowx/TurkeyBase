@@ -9,12 +9,15 @@ class UsersController < ApplicationController
 
   # For creating a new user
   def create
+
     @user = User.new(user_params)
+
     if @user.save
       flash[:success] = "User created successfully!"
       redirect_to root_url
     else
-      render 'new'
+        flash[:info] = @user.errors.count
+      render 'users/new'
     end
   end
 
@@ -47,7 +50,6 @@ class UsersController < ApplicationController
 
     # The permitted user parameters to be inputted into the system
     def user_params
-      params.require(:user).permit(:user_id, :password, :password_confirm,
-                                    :is_admin, :login_role )
+      params.require(:user).permit(:user_id, :password, :password_confirmation, :is_admin, :login_role)
     end
 end

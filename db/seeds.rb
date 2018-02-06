@@ -10,16 +10,19 @@
 User.create!(user_id: "admin",
              is_admin: true,
              password: "admin_pass",
+             password_confirmation: "admin_pass",
              login_role: true)
 
 # Create the default sales role
 User.create!(user_id: "sales",
              is_admin: false,
-             password: "admin_pass",
+             password: "sales_pass",
+             password_confirmation: "sales_pass",
              login_role: true)
 
 # Create a test non-login role
 User.create!(user_id: "Test non-login",
              is_admin: false,
              password: "password",
+             password_confirmation: "password",
              login_role: false)

@@ -1,7 +1,7 @@
 class User < ApplicationRecord
+  
   # Validate the User ID for being there, max 30 characters, and unique
-  validates :user_id, presence: true, length: {maximum:30},
-                length: {minimum:2},
+  validates :user_id, presence: true, length: {maximum:30, minimum:2},
                 uniqueness: {case_sensitive: false}
 
 

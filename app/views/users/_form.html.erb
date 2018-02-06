@@ -1,8 +1,8 @@
 <%=
-  form_for(:session, url: new_user_path,
+  form_for(@user, url: new_user_path,
   :html => {:class => "form-horizontal center"}) do |f|
 %>
-  <% render 'shared/errors', object: @user %>
+  <%= render 'shared/error_messages', object: @user %>
 
   <!-- User ID field -->
   <div class="form-group">
@@ -20,9 +20,9 @@
   </div>
   <!-- Password field -->
   <div class="form-group">
-    <%= f.label :password_confirm, 'Confirm Password' %>
+    <%= f.label :password_confirmation, 'Confirm Password' %>
     <%=
-      f.password_field :password_confirm, class: "form-control",
+      f.password_field :password_confirmation, class: "form-control",
       placeholder: "Confirm Password"
     %>
   </div>
