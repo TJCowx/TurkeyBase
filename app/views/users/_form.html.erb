@@ -2,6 +2,7 @@
   form_for(:session, url: new_user_path,
   :html => {:class => "form-horizontal center"}) do |f|
 %>
+  <% render 'shared/errors', object: @user %>
 
   <!-- User ID field -->
   <div class="form-group">
@@ -29,8 +30,8 @@
   <!-- Admin & Login role checkboxes -->
   <center>
     <div class="form-inline">
-      <%= f.label :admin %>
-      <%= f.check_box :admin %>
+      <%= f.label :is_admin %>
+      <%= f.check_box :is_admin %>
       <%= f.label :login_role, style: "padding-left:20px;" %>
       <%= f.check_box :login_role %>
     </div>

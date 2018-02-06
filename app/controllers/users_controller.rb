@@ -4,11 +4,18 @@ class UsersController < ApplicationController
 
   # For getting to the new user page
   def new
+    @user = User.new    # So @user.errors doesn't error out
   end
 
   # For creating a new user
   def create
-
+    @user = User.new(user_params)
+    if @user.save
+      flash[:success] = "User created successfully!"
+      redirect_to root_url
+    else
+      render 'new'
+    end
   end
 
   # For updating a user
@@ -40,6 +47,7 @@ class UsersController < ApplicationController
 
     # The permitted user parameters to be inputted into the system
     def user_params
-      params.require(:user).permit(:user_id, :password, )
+      params.require(:user).permit(:user_id, :password, :password_confirm,
+                                    :is_admin, :login_role )
     end
 end
