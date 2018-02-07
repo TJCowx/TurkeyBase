@@ -21,6 +21,9 @@
         <script>
             setTimeout("$('.flash-messages').fadeOut('slow')", 5000);
         </script>
+        <div class="page-header">
+          <center><h2><%= yield(:header)%></h2></center>
+        </div>
         <%= yield %>
     </div> <!-- /container.center -->
     <%= render 'layouts/footer' %>

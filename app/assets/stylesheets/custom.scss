@@ -1,2 +1,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.back-warning {
+  background-color: #b94a48;
+  color: white;
+}
+.back-warning:hover {
+  background-color: #953b39;
+  color: white;
+}

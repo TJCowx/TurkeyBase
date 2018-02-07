@@ -1,0 +1,8 @@
+<li class="list-group-item">
+    <%= link_to user.user_id, edit_user_path(user) %>
+    <span class="badge back-warning">
+        <%= link_to "Delete", user, method: :delete,
+                    data: {confirm:"Do you want to delete #{user.user_id}"},
+                    class: "back-warning" %>
+    </span>
+</li>

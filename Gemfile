@@ -36,6 +36,8 @@ gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'b
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 gem 'autoprefixer-rails'
+# For pagination
+gem 'will_paginate', '3.1.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

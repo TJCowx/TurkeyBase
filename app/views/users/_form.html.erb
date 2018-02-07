@@ -2,43 +2,42 @@
   form_for(@user, url: new_user_path,
   :html => {:class => "form-horizontal center"}) do |f|
 %>
-  <%= render 'shared/error_messages', object: @user %>
+    <%= render 'shared/error_messages', object: @user %>
 
-  <!-- User ID field -->
-  <div class="form-group">
-    <%= f.label :user_id, 'Username' %>
-    <%= f.text_field :user_id, class: "form-control", placeholder: "Username" %>
-  </div>
-
-  <!-- Password field -->
-  <div class="form-group">
-    <%= f.label :password %>
-    <%=
-      f.password_field :password, class: "form-control",
-      placeholder: "Password"
-    %>
-  </div>
-  <!-- Password field -->
-  <div class="form-group">
-    <%= f.label :password_confirmation, 'Confirm Password' %>
-    <%=
-      f.password_field :password_confirmation, class: "form-control",
-      placeholder: "Confirm Password"
-    %>
-  </div>
-
-  <!-- Admin & Login role checkboxes -->
-  <center>
-    <div class="form-inline">
-      <%= f.label :is_admin %>
-      <%= f.check_box :is_admin %>
-      <%= f.label :login_role, style: "padding-left:20px;" %>
-      <%= f.check_box :login_role %>
+    <!-- User ID field -->
+    <div class="form-group">
+        <%= f.label :user_id, 'Username' %>
+        <%= f.text_field :user_id, class: "form-control", placeholder: "Username" %>
     </div>
-  </center>
 
-  <%=
-    f.submit yield(:button_text), class: "btn btn-success",
-    style: "background-color: #2b543b; border-color: black; width:100%;"
-  %>
+    <!-- Password field -->
+    <div class="form-group">
+      <%= f.label :password %>
+      <%=
+        f.password_field :password, class: "form-control",
+        placeholder: "Password"
+      %>
+    </div>
+    <!-- Password field -->
+    <div class="form-group">
+        <%= f.label :password_confirmation, 'Confirm Password' %>
+        <%=
+            f.password_field :password_confirmation, class: "form-control",
+            placeholder: "Confirm Password"
+        %>
+    </div>
+    <!-- Admin & Login role checkboxes -->
+    <center>
+        <div class="form-inline">
+            <%= f.label :is_admin %>
+            <%= f.check_box :is_admin %>
+            <%= f.label :login_role, style: "padding-left:20px;" %>
+            <%= f.check_box :login_role %>
+        </div>
+    </center>
+
+    <%=
+        f.submit yield(:button_text), class: "btn btn-success",
+        style: "background-color: #2b543b; border-color: black; width:100%;"
+    %>
 <% end %>
