@@ -8,5 +8,4 @@ class User < ApplicationRecord
   has_secure_password     # Needed for hashing password
   # validate the Password for being there & matching confirmation
   validates :password, confirmation: true, allow_nil: true
-  #validates :password_confirmation, presence: true, allow_nil: true
 end

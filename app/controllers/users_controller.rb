@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   # Gets all the users into a list that aren't admins
   def index
+    @self_user = User.find(current_user.id)
     # Selects all non-admin login users
     @login_users = User.where(:is_admin => false, :login_role=> true).order("user_id DESC")
     # Selects all non-login users
