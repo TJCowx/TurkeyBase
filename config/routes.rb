@@ -15,7 +15,13 @@ Rails.application.routes.draw do
     get     '/new_user', to: 'users#new'
     post    '/new_user', to: 'users#create'
 
+    # Manage Order seasons
+    get     '/order_season', to: 'order_season#index'
+    get     '/new_order_season', to: 'order_season#new'
+    post    '/new_order_season', to: 'order_season#create'
+
     resources :users
+    resources :order_season
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

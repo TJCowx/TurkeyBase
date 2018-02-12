@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/Nerian/bootstrap-datepicker-rails.git
+  revision: 94fc769914455f6f505b467011649d76b13ea112
+  specs:
+    bootstrap-datepicker-rails (1.7.1.1)
+      railties (>= 3.0)
+
+GIT
   remote: https://github.com/codahale/bcrypt-ruby.git
   revision: f2db689ba567d1a018f4dacb1ccf909adc93e887
   specs:
@@ -73,6 +80,9 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.3)
+    date_validator (0.9.0)
+      activemodel
+      activesupport
     erubi (1.7.0)
     execjs (2.7.0)
     ffi (1.9.18-x64-mingw32)
@@ -190,10 +200,12 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bcrypt!
+  bootstrap-datepicker-rails!
   bootstrap-sass (~> 3.3.6)
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
+  date_validator
   jbuilder (~> 2.5)
   jquery-rails
   puma (~> 3.7)
