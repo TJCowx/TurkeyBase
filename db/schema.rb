@@ -12,8 +12,11 @@
 
 ActiveRecord::Schema.define(version: 20180209203200) do
 
-  create_table "order_season_pickup_dates", primary_key: "pickup_date_id", force: :cascade do |t|
-    t.integer "order_season_id"
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "order_season_pickup_dates", primary_key: "pickup_date_id", id: :integer, default: -> { "nextval('custom_pickup_id_seq'::regclass)" }, force: :cascade do |t|
+    t.bigint "order_season_id"
     t.date "pickup_date"
     t.index ["order_season_id"], name: "index_order_season_pickup_dates_on_order_season_id"
   end

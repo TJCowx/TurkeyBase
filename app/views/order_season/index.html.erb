@@ -1,2 +1,5 @@
 <% provide(:header, "Order Seasons")
    provide(:title, "Order Seasons")%>
+<ul class='list-group'>
+    <%= render :partial => '/order_season/order_season', :locals =>{:order_season => @seasons } %>
+</ul>

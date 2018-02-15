@@ -3,7 +3,7 @@
 class OrderSeason < ActiveRecord::Migration[5.1]
   def change
       create_table :order_seasons, {:id => false} do |t|
-          t.integer :order_season_id, primary_key: true
+          t.integer :order_season_id, primary_key: true, auto_increment: true
           t.string :order_season_name
           t.boolean :current_season
       end

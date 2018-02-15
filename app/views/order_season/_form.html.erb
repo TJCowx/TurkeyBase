@@ -14,10 +14,10 @@
     <!-- Range Picker -->
     <div class="form-inline">
         <%= f.label :pickup_date_start, 'Start' %> &nbsp;<span class="glyphicon glyphicon-calendar"><div class="hidden-text">Date</div></span>
-        <%= f.text_field :pickup_date_start, 'data-provide': 'datepicker', oninput: 'limitEnd'  %>
+        <%= f.date_field :pickup_date_start %>
         &nbsp;
         <%= f.label :pickup_date_end, 'End' %> &nbsp;<span class="glyphicon glyphicon-calendar"><div class="hidden-text">Date</div></span>
-        <%= f.text_field :pickup_date_end, 'data-provide': 'datepicker', oninput: 'limitStart' %>
+        <%= f.date_field :pickup_date_end %>
     </div>
 
     <!-- Choose to set it as active order season -->
@@ -27,5 +27,4 @@
     </div>
 
     <%= f.submit yield(:button_text), class: "btn btn-success submit-style" %>
-
 <% end %>

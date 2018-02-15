@@ -1,0 +1,10 @@
+<% @pickup_dates.each do |date| %>
+    <li class="list-group-item">
+        <%= date.pickup_date  %>
+        <span class="badge back-warning">
+            <%= link_to "Delete", date, method: :delete,
+                data: {confirm:"Do you want to delete #{date.pickup_date}"},
+                class: "back-warning" %>
+        </span>
+    </li>
+<% end %>
