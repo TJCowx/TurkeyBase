@@ -1,0 +1,10 @@
+<% @order_seasons.each do |season| %>
+    <li class="list-group-item">
+        <%= link_to season.order_season_name, edit_order_season_path(season.order_season_id) %>
+        <% if season.current_season? %>
+            <span class="badge">
+                Active Season
+            </span>
+        <% end %>
+    </li>
+<% end %>

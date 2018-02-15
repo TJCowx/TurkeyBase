@@ -9,7 +9,9 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
+# Use pgadmin as the database
+gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -38,6 +40,11 @@ gem 'jquery-rails'
 gem 'autoprefixer-rails'
 # For pagination
 gem 'will_paginate', '3.1.5'
+
+# For the date picker
+gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
+                              :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

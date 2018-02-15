@@ -1,0 +1,30 @@
+<%=
+    form_for(@order_season, url: new_order_season_url,
+    :html => {:class => "form-horizontal center"}) do |f|
+%>
+    <%= render 'shared/error_messages', object: @order_season %>
+
+    <!-- Name Field -->
+    <div class="form-group">
+        <%= f.label :order_season_name, 'Order Season\'s Name' %>
+        <%= f.text_field :order_season_name, class: "form-control",
+            placeholder: "Order Season Name" %>
+    </div>
+
+    <!-- Range Picker -->
+    <div class="form-inline">
+        <%= f.label :pickup_date_start, 'Start' %> &nbsp;<span class="glyphicon glyphicon-calendar"><div class="hidden-text">Date</div></span>
+        <%= f.date_field :pickup_date_start %>
+        &nbsp;
+        <%= f.label :pickup_date_end, 'End' %> &nbsp;<span class="glyphicon glyphicon-calendar"><div class="hidden-text">Date</div></span>
+        <%= f.date_field :pickup_date_end %>
+    </div>
+
+    <!-- Choose to set it as active order season -->
+    <div class="form-inline">
+        <%= f.label :current_season, 'Active Ordering Season' %>
+        <%= f.check_box :current_season, class: "checkbox-control" %>
+    </div>
+
+    <%= f.submit yield(:button_text), class: "btn btn-success submit-style" %>
+<% end %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
     get 'users/new'
     get 'sessions/new'
 
@@ -15,7 +16,15 @@ Rails.application.routes.draw do
     get     '/new_user', to: 'users#new'
     post    '/new_user', to: 'users#create'
 
+    # Manage Order seasons
+    get     '/order_season', to: 'order_season#index'
+    get     '/new_order_season', to: 'order_season#new'
+    post    '/new_order_season', to: 'order_season#create'
+
+    # Delete Order Season pickup dates
     resources :users
+    resources :order_season
+    resources :order_season_pickup_dates
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
