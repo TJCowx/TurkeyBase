@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180218185740) do
+ActiveRecord::Schema.define(version: 20180218215535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,9 +21,23 @@ ActiveRecord::Schema.define(version: 20180218185740) do
     t.index ["order_season_id"], name: "index_order_season_pickup_dates_on_order_season_id"
   end
 
-  create_table "order_seasons", primary_key: "order_season_id", force: :cascade do |t|
+  create_table "order_seasons", primary_key: "order_season_id", id: :integer, default: -> { "nextval('custom_order_season_id_seq'::regclass)" }, force: :cascade do |t|
     t.string "order_season_name"
     t.boolean "current_season"
+  end
+
+  create_table "product_sizes", primary_key: "product_size_id", id: :integer, default: -> { "nextval('custom_product_size_id_seq'::regclass)" }, force: :cascade do |t|
+    t.bigint "product_id"
+    t.string "product_size_name"
+    t.boolean "active_size"
+    t.index ["product_id"], name: "index_product_sizes_on_product_id"
+  end
+
+  create_table "product_styles", primary_key: "product_style_id", id: :integer, default: -> { "nextval('custom_product_style_id_seq'::regclass)" }, force: :cascade do |t|
+    t.bigint "product_id"
+    t.string "product_style_name"
+    t.boolean "active_style"
+    t.index ["product_id"], name: "index_product_styles_on_product_id"
   end
 
   create_table "products", primary_key: "product_id", id: :integer, default: -> { "nextval('custom_product_id_seq'::regclass)" }, force: :cascade do |t|

@@ -12,6 +12,5 @@ class CreateOrderSeasonPickupDates < ActiveRecord::Migration[5.1]
         ALTER SEQUENCE custom_pickup_id_seq OWNED BY order_season_pickup_dates.pickup_date_id;
         ALTER TABLE order_season_pickup_dates ALTER COLUMN pickup_date_id SET DEFAULT nextval('custom_pickup_id_seq');
     SQL
-
   end
 end
