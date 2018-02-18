@@ -1,0 +1,12 @@
+<%
+    provide(:header, 'Add a Product')
+    provide(:title, 'New Product')
+    provide(:form_type, new_product_path)
+    provide(:button_text, 'Add Product')
+%>
+
+<div class="row">
+  <div class="col-md-7 col-md-offset-2">
+    <%= render 'form' %>
+  </div>
+</div>

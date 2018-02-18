@@ -1,0 +1,13 @@
+<%=
+    form_for @product, :html => {:class => "form-horizontal center"} do |f|
+%>
+    <div class="form-group">
+        <%= f.label :product_name, 'Product Name' %>
+        <%= f.text_field :product_name, class: 'form-control', placeholder: "Product Name" %>
+    </div>
+
+    <%=
+        f.submit yield(:button_text), class: 'btn btn-success submit-style'
+    %>
+
+<% end %>

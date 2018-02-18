@@ -1,0 +1,7 @@
+<%
+    provide(:header, 'Edit ' + @product.product_name)
+    provide(:title, 'Edit ' + @product.product_name)
+    provide(:button_text, 'Update ' + @product.product_name)
+%>
+
+<%= render 'form' %>
