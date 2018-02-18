@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180209203200) do
+ActiveRecord::Schema.define(version: 20180218185740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,10 @@ ActiveRecord::Schema.define(version: 20180209203200) do
   create_table "order_seasons", primary_key: "order_season_id", force: :cascade do |t|
     t.string "order_season_name"
     t.boolean "current_season"
+  end
+
+  create_table "products", primary_key: "product_id", id: :integer, default: -> { "nextval('custom_product_id_seq'::regclass)" }, force: :cascade do |t|
+    t.string "product_name"
   end
 
   create_table "users", force: :cascade do |t|
