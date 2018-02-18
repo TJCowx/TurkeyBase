@@ -5,6 +5,12 @@
             <span class="badge">
                 Active Season
             </span>
+        <% else %>
+            <span class="badge back-warning">
+                <%= link_to "Delete", season, method: :delete,
+                            data: {confirm:"Do you want to delete #{season.order_season_name}"},
+                            class: "back-warning" %>
+            </span>
         <% end %>
     </li>
 <% end %>

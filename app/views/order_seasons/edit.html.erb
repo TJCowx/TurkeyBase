@@ -3,7 +3,7 @@
     provide(:button_text, 'Update Ordering Season')
 %>
 
-<%= form_for(@order_season,
+<%= form_for(@order_season, url: order_season_path,
     :html =>{:class => "form-horizontal center"}) do |f| %>
 
     <%= render 'shared/error_messages', object: @order_season%>
@@ -19,8 +19,12 @@
     <div class="form-inline">
         <%= f.label :current_season, 'Active Ordering Season' %>
         <%= f.check_box :current_season, class: "checkbox-control" %>
+        <br/>
+        <small id="current_seasonHelp" class="form-text text-muted">
+            This will make any current active seasons unactive
+        </small>
     </div>
-
+    <br/>
     <%= f.submit yield(:button_text), class: "btn btn-success submit-style" %>
 
 <% end %>
@@ -43,6 +47,10 @@
                     </div>
                 </span>
             <% end %>
+            <br/>
+            <small id="input_dateHelp" class="form-text text-muted">
+                Save any other changes before adding a new date
+            </small>
         </div>
     <% end %>
 </div>
@@ -61,7 +69,7 @@
 <br/>
 
 <ul class='list-group'>
-    <%= render :partial => '/order_season/pickup_date', :locals =>{:order_season => @pickup_dates } %>
+    <%= render :partial => '/order_seasons/pickup_date', :locals =>{:order_season => @pickup_dates } %>
 </ul>
 
 <script>

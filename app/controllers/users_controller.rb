@@ -38,6 +38,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # For rendering the edit view
   def edit
       @user = User.find(params[:id])
   end

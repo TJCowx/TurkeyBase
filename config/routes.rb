@@ -17,13 +17,13 @@ Rails.application.routes.draw do
     post    '/new_user', to: 'users#create'
 
     # Manage Order seasons
-    get     '/order_season', to: 'order_season#index'
-    get     '/new_order_season', to: 'order_season#new'
-    post    '/new_order_season', to: 'order_season#create'
+    #get     '/order_season', to: 'order_seasons#index'
+    get     '/new_order_season', to: 'order_seasons#new'
+    post    '/new_order_season', to: 'order_seasons#create'
 
     # Delete Order Season pickup dates
     resources :users
-    resources :order_season
+    resources :order_seasons
     resources :order_season_pickup_dates
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

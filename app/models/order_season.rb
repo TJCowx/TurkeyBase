@@ -3,9 +3,9 @@ class OrderSeason < ApplicationRecord
     attr_accessor :pickup_date_start, :pickup_date_end
     accepts_nested_attributes_for :order_season_pickup_date
     validates :order_season_name, presence: true, length: {minimum: 5, maximum: 50}
-    validates :pickup_date_end, presence: true
-    validates :pickup_date_start, presence: true
-    validate :end_date_after_start_date
+    validates :pickup_date_end, presence: true, on: :create
+    validates :pickup_date_start, presence: true, on: :create
+    validate :end_date_after_start_date, on: :create
 
 
     private

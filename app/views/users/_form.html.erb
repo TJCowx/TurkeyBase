@@ -33,8 +33,13 @@
             <%= f.check_box :is_admin %>
             <%= f.label :login_role, style: "padding-left:20px;" %>
             <%= f.check_box :login_role %>
+            <br/>
+            <small id="login_roleHelp" class="form-text text-muted">
+                On checked the user will be able to log-in,but won't show in ordering
+            </small>
         </div>
     </center>
+    <br/>
 
     <%=
         f.submit yield(:button_text), class: "btn btn-success",

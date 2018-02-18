@@ -19,12 +19,16 @@
         <%= f.label :pickup_date_end, 'End' %> &nbsp;<span class="glyphicon glyphicon-calendar"><div class="hidden-text">Date</div></span>
         <%= f.date_field :pickup_date_end %>
     </div>
-
+    <br/>
     <!-- Choose to set it as active order season -->
     <div class="form-inline">
         <%= f.label :current_season, 'Active Ordering Season' %>
         <%= f.check_box :current_season, class: "checkbox-control" %>
+        <br/>
+        <small id="current_seasonHelp" class="form-text text-muted">
+            This will make any current active seasons unactive
+        </small>
     </div>
-
+    <br/>
     <%= f.submit yield(:button_text), class: "btn btn-success submit-style" %>
 <% end %>
