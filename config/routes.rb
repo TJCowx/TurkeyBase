@@ -25,12 +25,12 @@ Rails.application.routes.draw do
     post    '/new_product', to: 'products#create'
     get     '/products', to: 'products#index'
 
-    # Delete Order Season pickup dates
     resources :users
     resources :order_seasons
     resources :order_season_pickup_dates
     resources :products
-
+    resources :product_sizes
+    resources :product_styles
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

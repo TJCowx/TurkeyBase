@@ -1,13 +1,47 @@
 <%=
     form_for @product, :html => {:class => "form-horizontal center"} do |f|
 %>
-    <div class="form-group">
-        <%= f.label :product_name, 'Product Name' %>
-        <%= f.text_field :product_name, class: 'form-control', placeholder: "Product Name" %>
+    <div class="row">
+        <div class="col-md-7 col-md-offset-2">
+            <div class="form-group">
+                <%= f.label :product_name, 'Product Name' %>
+                <%= f.text_field :product_name, class: 'form-control', placeholder: "Product Name" %>
+            </div>
+
+            <%=
+                f.submit yield(:button_text), class: 'btn btn-success submit-style'
+            %>
+
+        </div>
     </div>
 
-    <%=
-        f.submit yield(:button_text), class: 'btn btn-success submit-style'
-    %>
+    <div class="row">
+        <div id='size' class="col-md-6" style="padding-right: 30px;">
+            <div class="page-header">
+                <center><h4>Product Sizes</h4></center>
+            </div>
+            <%= render 'product_size'%>
+            <button type='button' id="new_size" class="btn btn-success background-color">
+                <span class="glyphicon glyphicon-plus">
+                    <div class="hidden-text">
+                        New Product Size
+                    </div>
+                </span>
+            </button>
+        </div>
 
+        <div id='style' class="col-md-6" style="padding-right: 30px;">
+            <div class="page-header">
+                <center><h4>Product Styles</h4></center>
+            </div>
+            <%= render 'product_style' %>
+            <button type='button' id="new_style" class="btn btn-success background-color">
+                <span class="glyphicon glyphicon-plus">
+                    <div class="hidden-text">
+                        New Product Style
+                    </div>
+                </span>
+            </button>
+        </div>
+    </div>
 <% end %>

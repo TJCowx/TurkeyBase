@@ -3,6 +3,8 @@ class ProductsController < ApplicationController
     # For the new view. Loads a new product
     def new
         @product = Product.new
+        @product_size = ProductSize.new
+        @product_style = ProductStyle.new
     end
 
     # Saves the product into the database
