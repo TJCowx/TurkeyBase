@@ -1,6 +1,6 @@
-<%=
-    form_for @product, :html => {:class => "form-horizontal center"} do |f|
-%>
+<% if local_assigns.has_key? :url %>
+    <%= form_for @product, url: url do |f| %>
+    <%= render 'shared/error_messages', object: @product %>
     <div class="row">
         <div class="col-md-7 col-md-offset-2">
             <div class="form-group">
@@ -20,6 +20,7 @@
             <div class="page-header">
                 <center><h4>Product Sizes</h4></center>
             </div>
+            <%= render 'shared/error_messages', object: @product_size %>
             <%= render 'product_size'%>
             <button type='button' id="new_size" class="btn btn-success background-color">
                 <span class="glyphicon glyphicon-plus">
@@ -34,6 +35,7 @@
             <div class="page-header">
                 <center><h4>Product Styles</h4></center>
             </div>
+            <%= render 'shared/error_messages', object: @product_style %>
             <%= render 'product_style' %>
             <button type='button' id="new_style" class="btn btn-success background-color">
                 <span class="glyphicon glyphicon-plus">
@@ -44,4 +46,10 @@
             </button>
         </div>
     </div>
+<% end %>
+<% else %>
+        <%
+            flash[:danger] = "Uh Oh! The form didn't build correctly! Try Again!"
+            redirect_to products_url
+        %>
 <% end %>
