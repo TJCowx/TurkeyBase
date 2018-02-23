@@ -20,8 +20,15 @@
             <div class="page-header">
                 <center><h4>Product Sizes</h4></center>
             </div>
-            <%= render 'shared/error_messages', object: @product_size %>
-            <%= render 'product_size'%>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <strong>Selectable </strong>
+                        <%= f.check_box :select_size, class: 'checkbox-control'%>
+                    </span>
+                    <%= f.text_field :size, class: 'form-control', placeholder: "Product Size", input_html:{multiple:true} %>
+                </div>
+            </div>
             <button type='button' id="new_size" class="btn btn-success background-color">
                 <span class="glyphicon glyphicon-plus">
                     <div class="hidden-text">
@@ -35,8 +42,15 @@
             <div class="page-header">
                 <center><h4>Product Styles</h4></center>
             </div>
-            <%= render 'shared/error_messages', object: @product_style %>
-            <%= render 'product_style' %>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <strong>Selectable </strong>
+                        <%= f.check_box :select_style, class: 'checkbox-control'%>
+                    </span>
+                    <%= f.text_field :style, class: 'form-control', placeholder: "Product Style", input_html:{multiple:true} %>
+                </div>
+            </div>
             <button type='button' id="new_style" class="btn btn-success background-color">
                 <span class="glyphicon glyphicon-plus">
                     <div class="hidden-text">

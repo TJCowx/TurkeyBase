@@ -11,13 +11,18 @@ class ProductsController < ApplicationController
     def create
         # Get the product parameters
         @product = Product.new(product_params)
-        @product_size = ProductSize.new(:product_id => @product.product_id,
-                :product_size_name => product_params[:product_size_name])
-        @product_style = ProductStyle.new
 
         # Save the product, if it doesn't save show errors, else show success message
         # and redirect to the products index page
-        if @product.save && @product_size.save
+        if @product.save
+            @product_style = ProductStyle.new(:product_id => @product.product_id,
+                :product_style_name => product_params[:style],
+                :active_style => product_params[:select_style])
+            @product_style.save
+            @product_size = ProductSize.new(:product_id => @product.product_id,
+                :product_size_name => product_params[:size],
+                :active_size => product_params[:select_size])
+            @product_size.save
             flash[:success] = "#{@product.product_name} has been added"
             redirect_to products_path
         else
@@ -43,7 +48,7 @@ class ProductsController < ApplicationController
             redirect_to products_path
         else
             redirect_to products_path
-            flash[:danger] = "Couldn't delete product, incorrect password."
+            flash[:danger] = "Couldn't delete product."
         end
     end
 
@@ -68,7 +73,7 @@ class ProductsController < ApplicationController
 
     protected
         def product_params
-            params.require(:product).permit(:product_id, :product_name, product_size_attributes: [:product_size_name],
-                product_style_attributes: [:product_style_name])
+            params.require(:product).permit(:product_id, :product_name, :style,
+                :size, :select_size, :select_style)
         end
 end
