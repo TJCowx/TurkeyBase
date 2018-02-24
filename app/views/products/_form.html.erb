@@ -21,21 +21,43 @@
                 <center><h4>Product Sizes</h4></center>
             </div>
             <div class="form-group">
-                <%= f.fields_for :product_sizes do |builder| %>
-                    <%= render 'product_sizes', :f => builder %>
-                <% end %>
-                <%= link_to_add_field '', f, :product_sizes %>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <strong>Selectable </strong>
+                        <%= f.check_box :select_size, class: 'checkbox-control'%>
+                    </span>
+                    <%= f.text_field :size, class: 'form-control', placeholder: "Product Size", input_html:{multiple:true} %>
+                </div>
             </div>
+            <button type='button' id="new_size" class="btn btn-success background-color">
+                <span class="glyphicon glyphicon-plus">
+                    <div class="hidden-text">
+                        New Product Size
+                    </div>
+                </span>
+            </button>
         </div>
 
         <div id='style' class="col-md-6" style="padding-right: 30px;">
             <div class="page-header">
                 <center><h4>Product Styles</h4></center>
             </div>
-            <%= f.fields_for :product_styles do |builder| %>
-                <%= render 'product_styles', :f => builder %>
-            <% end %>
-            <%= link_to_add_field '', f, :product_styles %>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <strong>Selectable </strong>
+                        <%= f.check_box :select_style, class: 'checkbox-control'%>
+                    </span>
+                    <%= f.text_field :style, class: 'form-control', placeholder: "Product Style", input_html:{multiple:true} %>
+                </div>
+            </div>
+            <button type='button' id="new_style" class="btn btn-success background-color">
+                <span class="glyphicon glyphicon-plus">
+                    <div class="hidden-text">
+                        New Product Style
+                    </div>
+                </span>
+            </button>
         </div>
     </div>
 <% end %>

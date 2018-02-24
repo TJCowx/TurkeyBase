@@ -3,8 +3,8 @@ class ProductsController < ApplicationController
     # For the new view. Loads a new product
     def new
         @product = Product.new
-        @product.product_sizes.build
-        @product.product_styles.build
+        @product_size = @product.product_sizes.build
+        @product_style = @product.product_styles.build
     end
 
     # Saves the product into the database
@@ -15,6 +15,14 @@ class ProductsController < ApplicationController
         # Save the product, if it doesn't save show errors, else show success message
         # and redirect to the products index page
         if @product.save
+            @product_style = ProductStyle.new(:product_id => @product.product_id,
+                :product_style_name => product_params[:style],
+                :active_style => product_params[:select_style])
+            @product_style.save
+            @product_size = ProductSize.new(:product_id => @product.product_id,
+                :product_size_name => product_params[:size],
+                :active_size => product_params[:select_size])
+            @product_size.save
             flash[:success] = "#{@product.product_name} has been added"
             redirect_to products_path
         else
@@ -65,8 +73,7 @@ class ProductsController < ApplicationController
 
     protected
         def product_params
-            params.require(:product).permit(:product_id, :product_name,
-                product_styles_attributes:[:product_id, :product_style_id, :product_style_name, :_destroy],
-                product_sizes_attributes:[:product_id, :product_size_id, :product_size_name, :_destroy])
+            params.require(:product).permit(:product_id, :product_name, :style,
+                :size, :select_size, :select_style)
         end
 end

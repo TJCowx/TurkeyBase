@@ -1,0 +1,11 @@
+<%= form_for @product_style, :html => {:class => "form-horizontal center"} do |x| %>
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon">
+                <strong>Selectable </strong>
+                <%= x.check_box :active_style, class: 'checkbox-control'%>
+            </span>
+            <%= x.text_field :product_style_name, class: 'form-control', placeholder: "Product Style", multiple: true %>
+        </div>
+    </div>
+<% end %>

@@ -1,13 +1,8 @@
 <li class="list-group-item">
-    <div class='input-group'>
-        <%= link_to product.product_name, edit_product_path(product) %>
-        <span class="input-group-addon back-warning">
-            <%= link_to product, method: :delete,
-                data: {confirm:"Do you want to delete #{product.product_name}"} do %>
-            <div >
-                Delete
-            </div>
-            <% end %>
-        </span>
-    </div>
+    <%= link_to product.product_name, edit_product_path(product) %>
+    <span class="badge back-warning">
+        <%= link_to "Delete", product, method: :delete,
+                    data: {confirm:"Do you want to delete #{product.product_name}"},
+                    class: "back-warning" %>
+    </span>
 </li>
