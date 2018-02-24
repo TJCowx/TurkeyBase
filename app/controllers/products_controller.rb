@@ -15,7 +15,6 @@ class ProductsController < ApplicationController
         # Save the product, if it doesn't save show errors, else show success message
         # and redirect to the products index page
         if @product.save
-            
             flash[:success] = "#{@product.product_name} has been added"
             redirect_to products_path
         else
