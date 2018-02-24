@@ -1,5 +1,5 @@
-<% if local_assigns.has_key? :url %>
-    <%= form_for @product, url: url do |f| %>
+<% #if local_assigns.has_key? :url %>
+    <%= form_for @product do |f| %>
     <%= render 'shared/error_messages', object: @product %>
     <div class="row">
         <div class="col-md-7 col-md-offset-2">
@@ -39,9 +39,9 @@
         </div>
     </div>
 <% end %>
-<% else %>
+<%# else %>
         <%
-            flash[:danger] = "Uh Oh! The form didn't build correctly! Try Again!"
-            redirect_to products_url
+            #flash[:danger] = "Uh Oh! The form didn't build correctly! Try Again!"
+            #redirect_to products_url
         %>
-<% end %>
+<% #end %>
