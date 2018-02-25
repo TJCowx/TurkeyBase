@@ -24,13 +24,15 @@ Rails.application.routes.draw do
     get     '/new_product', to: 'products#new'
     post    '/new_product', to: 'products#create'
     get     '/products', to: 'products#index'
+    post    '/product_sizes/:id', to: 'product_sizes#toggle'
+    post    '/product_styles/:id', to: 'product_styles#toggle'
 
     resources :users
     resources :order_seasons
     resources :order_season_pickup_dates, only: [:new, :create, :destroy]
     resources :products
-    resources :product_sizes, only: [:new, :create, :edit, :update]
-    resources :product_styles, only: [:new, :create, :edit, :update]
+    resources :product_sizes
+    resources :product_styles
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

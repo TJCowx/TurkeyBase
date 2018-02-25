@@ -21,7 +21,9 @@
                 <center><h4>Product Sizes</h4></center>
             </div>
             <% if !@product.new_record? %>
-                Edewrweit
+                <ul class='list-group'>
+                    <%= render 'product_size'%>
+                </ul>
             <% end %>
 
             <div class="form-group">
@@ -57,7 +59,7 @@
                         <strong>Selectable </strong>
                         <%= f.check_box :select_style, class: 'checkbox-control'%>
                     </span>
-                    <%= f.text_field :style, class: 'form-control', placeholder: "Product Style", input_html:{multiple:true} %>
+                    <%= f.text_field :style, class: 'form-control', placeholder: "Product Style" %>
                 </div>
             </div>
             <button type='button' id="new_style" class="btn btn-success background-color">

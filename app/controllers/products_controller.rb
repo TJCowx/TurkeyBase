@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
         # and redirect to the products index page
         if @product.save
 
-            
+
             @product_style = ProductStyle.new(:product_id => @product.product_id,
                 :product_style_name => product_params[:style],
                 :active_style => product_params[:select_style])
@@ -60,6 +60,7 @@ class ProductsController < ApplicationController
     def edit
         @product = Product.find(params[:id])
         @product_style = ProductStyle.where(:product_id => @product.product_id)
+        @product_size = ProductSize.where(:product_id => @product.product_id)
     end
 
     # Updates the product

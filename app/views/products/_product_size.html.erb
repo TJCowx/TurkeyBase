@@ -1,11 +1,21 @@
-<%= form_for @product_size, :html => {:class => "form-horizontal center"} do |x| %>
-    <div class="form-group">
-        <div class="input-group">
-            <span class="input-group-addon">
-                <strong>Selectable </strong>
-                <%= x.check_box :active_size, class: 'checkbox-control'%>
-            </span>
-            <%= x.text_field :size, class: 'form-control', placeholder: "Product Size", multiple: true %>
-        </div>
-    </div>
+<% @product_size.each do |x| %>
+<div class="list-group-item">
+    <span>
+        <% if x.active_size? %>
+            Selectable
+        <% else %>
+            Non-selectable
+        <% end %>
+        <%= link_to x, method: :toggle do %>
+            <button type='button' class='button-style'>Toggle</button>
+        <% end %>
+    </span>
+    |
+    <%= x.product_size_name %>
+    <span class="badge back-warning">
+        <%= link_to "Delete", x, method: :delete,
+            data: {confirm:"Do you want to delete #{x.product_size_name}"},
+            class: "back-warning" %>
+    </span>
+</div>
 <% end %>
