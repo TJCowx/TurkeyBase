@@ -59,8 +59,10 @@ class ProductsController < ApplicationController
     # Gets the product that needs to be edited
     def edit
         @product = Product.find(params[:id])
-        @product_style = ProductStyle.where(:product_id => @product.product_id)
-        @product_size = ProductSize.where(:product_id => @product.product_id)
+        @product_styles = ProductStyle.where(:product_id => @product.product_id)
+        @product_sizes = ProductSize.where(:product_id => @product.product_id)
+        @product_style = ProductStyle.new
+        @product_size = ProductSize.new
     end
 
     # Updates the product
