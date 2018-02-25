@@ -12,9 +12,9 @@ class Product < ApplicationRecord
         uniqueness: {case_sensitive: false}
     validate :validate_size_style
     validates :size, presence: true, on: :create
-    #validates :style, presence: true, on: :create
+    validates :style, presence: true, on: :create
     validates :size, length: {minimum: 3, maximum: 20}
-    #validates :style, length: {minimum: 3, maximum: 20}
+    validates :style, length: {minimum: 3, maximum: 20}
 
     private
     def validate_size_style
