@@ -52,13 +52,15 @@
                 </ul>
             <% end %>
             <div class="form-group" id='new_styles'>
+                <%= f.fields_for :product_styles do |style| %>
                 <div class="input-group" id='new_style_fields'>
                     <span class="input-group-addon">
                         <strong>Selectable </strong>
-                        <%= f.check_box :select_style, class: 'checkbox-control'%>
+                        <%= style.check_box :active_style, class: 'checkbox-control'%>
                     </span>
-                    <%= f.text_field :style, class: 'form-control', placeholder: "Product Style", input_html:{multiple:true} %>
+                    <%= style.text_field :product_style_name, class: 'form-control', placeholder: "Product Style", input_html:{multiple:true} %>
                 </div>
+                <% end %>
             </div>
             <button type='button' id="new_style" class="btn btn-success background-color">
                 <span class="glyphicon glyphicon-plus">
