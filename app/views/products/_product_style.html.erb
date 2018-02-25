@@ -2,9 +2,9 @@
     <div class="list-group-item">
         <span>
             <%if x.active_style? %>
-                Selectable
+                Enabled
             <% else %>
-                Non-Selectable
+                Disabled
             <% end %>
             <%= link_to x, method: :toggle do %>
                 <button type='button' class='button-style'>Toggle</button>
