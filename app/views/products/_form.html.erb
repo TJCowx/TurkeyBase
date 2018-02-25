@@ -20,6 +20,10 @@
             <div class="page-header">
                 <center><h4>Product Sizes</h4></center>
             </div>
+            <% if !@product.new_record? %>
+                Edewrweit
+            <% end %>
+
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon">
@@ -42,6 +46,11 @@
             <div class="page-header">
                 <center><h4>Product Styles</h4></center>
             </div>
+            <% if !@product.new_record? %>
+                <ul class='list-group'>
+                    <%= render 'product_style'%>
+                </ul>
+            <% end %>
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon">
@@ -64,6 +73,5 @@
 <% else %>
         <%
             flash[:danger] = "Uh Oh! The form didn't build correctly! Try Again!"
-            redirect_to products_url
         %>
 <% end %>

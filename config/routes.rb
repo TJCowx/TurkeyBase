@@ -27,10 +27,10 @@ Rails.application.routes.draw do
 
     resources :users
     resources :order_seasons
-    resources :order_season_pickup_dates
+    resources :order_season_pickup_dates, only: [:new, :create, :destroy]
     resources :products
-    resources :product_sizes
-    resources :product_styles
+    resources :product_sizes, only: [:new, :create, :edit, :update]
+    resources :product_styles, only: [:new, :create, :edit, :update]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

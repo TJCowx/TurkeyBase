@@ -4,4 +4,4 @@
     provide(:button_text, 'Update ' +  @product.product_name)
 %>
 
-<%= render 'form' %>
+<%= render 'form', {url: edit_product_path} %>
