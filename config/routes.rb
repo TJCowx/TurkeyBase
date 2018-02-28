@@ -27,12 +27,19 @@ Rails.application.routes.draw do
     post    '/product_sizes/:id', to: 'product_sizes#toggle'
     post    '/product_styles/:id', to: 'product_styles#toggle'
 
+    # New & managing Orders
+    get     '/new_order', to: 'orders#new'
+    post    '/new_order', to: 'orders#create'
+
+
+    # TODO: Set the onlys for the resources
     resources :users
     resources :order_seasons
     resources :order_season_pickup_dates, only: [:new, :create, :destroy]
     resources :products
     resources :product_sizes
     resources :product_styles
+    resources :orders
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
