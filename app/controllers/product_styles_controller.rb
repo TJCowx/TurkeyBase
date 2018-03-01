@@ -39,6 +39,6 @@ class ProductStylesController < ApplicationController
     private
         def product_style_params
             params.require(:product_style).permit(:product_id, :product_style_id,
-                :product_style_name)
+                :product_style_name, :active_style)
         end
 end
