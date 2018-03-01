@@ -8,8 +8,8 @@ class OrderSeasonsController < ApplicationController
     # For rendering the edit order season page
     def edit
         @order_season = OrderSeason.find(params[:id])           # Get the order season selected
-        @pickup_dates = OrderSeasonPickupDate.where(:order_season_id => @order_season.order_season_id)  # Get the pickup dates in the order season
-        @order_season_pickup_date = OrderSeasonPickupDate.new   # For adding a new pickup date
+        @pickup_dates = PickupDate.where(:order_season_id => @order_season.order_season_id)  # Get the pickup dates in the order season
+        @order_season_pickup_date = PickupDate.new   # For adding a new pickup date
     end
 
     # Deleting the order season
@@ -23,9 +23,9 @@ class OrderSeasonsController < ApplicationController
     # Update the order season
     def update
         @order_season = OrderSeason.find(params[:id])   # Get the order season
-        @pickup_dates = OrderSeasonPickupDate.where(:order_season_id => @order_season.order_season_id)  # Get the pickup dates in the order season
-        @order_season_pickup_date = OrderSeasonPickupDate.new   # For adding a new pickup date
-        
+        @pickup_dates = PickupDate.where(:order_season_id => @order_season.order_season_id)  # Get the pickup dates in the order season
+        @pickup_date = PickupDate.new   # For adding a new pickup date
+
         # Updates the order season if values are correct
         # Returns errors if the values are incorrect
         if @order_season.update_attributes(order_season_params)
@@ -46,9 +46,9 @@ class OrderSeasonsController < ApplicationController
     def new
         # Starts creating a new order season & pickup date
         @order_season = OrderSeason.new
-        @date = OrderSeasonPickupDate.new
+        @date = PickupDate.new
         # Get the pickup dates tied to the order season
-        @order_season_pickup_date = @order_season.order_season_pickup_date.build
+        @pickup_date = @order_season.pickup_date.build
     end
 
     # Creates the order season & the date in the season
@@ -69,7 +69,7 @@ class OrderSeasonsController < ApplicationController
 
             # Loop through each date and add it to the database
             date_range.each do |date|
-                @date = OrderSeasonPickupDate.new(:order_season_id => season_id, :pickup_date => date)
+                @date = PickupDate.new(:order_season_id => season_id, :pickup_date => date)
                 @date.save
             end
 
@@ -103,7 +103,7 @@ class OrderSeasonsController < ApplicationController
         def order_season_params
             params.require(:order_season).permit(:order_season_id, :order_season_name,
                 :current_season, :pickup_date_start, :pickup_date_end,
-                order_season_pickup_dates_attributes: [:pickup_date_id, :pickup_date ])
+                pickup_dates_attributes: [:pickup_date_id, :pickup_date ])
         end
 
 end

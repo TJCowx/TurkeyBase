@@ -1,0 +1,128 @@
+<% if local_assigns.has_key? :url %>
+    <%= form_for @product do |f| %>
+    <%= render 'shared/error_messages', object: @product %>
+    <div class="row">
+        <div class="col-md-7 col-md-offset-2">
+            <div class="form-group">
+                <%= f.label :product_name, 'Product Name' %>
+                <%= f.text_field :product_name, class: 'form-control', placeholder: "Product Name" %>
+            </div>
+
+            <%=
+                f.submit yield(:button_text), class: 'btn btn-success submit-style'
+            %>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div id='size' class="col-md-6" style="padding-right: 30px;">
+            <div class="page-header">
+                <center><h4>Product Sizes</h4></center>
+            </div>
+            <% if @product.new_record? %>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <strong>Selectable </strong>
+                            <%= f.check_box :select_size, class: 'checkbox-control'%>
+                        </span>
+                        <%= f.text_field :size, class: 'form-control',
+                            placeholder: "Product Size", input_html:{multiple:true} %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+
+        <div id='style' class="col-md-6" style="padding-right: 30px;">
+            <div class="page-header">
+                <center><h4>Product Styles</h4></center>
+            </div>
+            <% if @product.new_record? %>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <strong>Selectable </strong>
+                            <%= f.check_box :select_style, class: 'checkbox-control'%>
+                        </span>
+                        <%= f.text_field :style, class: 'form-control', placeholder: "Product Style", input_html:{multiple:true} %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+<% end %>
+<% if !@product.new_record? %>
+    <div class='row'>
+        <div class="col-md-6" style="padding-right: 30px;">
+            <%= form_for @product_size,
+                :html => {:class => 'form-inline'} do |s| %>
+                <div class='form-group'>
+                    <%= s.hidden_field :product_id, value: @product.product_id %>
+                    <div class='input-group'>
+                        <span class="input-group-addon">
+                            <strong>Enabled </strong>
+                            <%= s.check_box :active_size, class: 'checkbox-control'%>
+                        </span>
+                        <%= s.text_field :product_size_name,
+                            class: 'form-control', placeholder: "Product Size" %>
+                    </div>
+                    <%= button_tag(type:'submit',
+                        class: "btn btn-success background-color") do %>
+                        <span class="glyphicon glyphicon-plus">
+                            <div class="hidden-text">
+                                Save Product Size
+                            </div>
+                        </span>
+                    <% end %>
+                    <br/>
+                    <small id="input_dateHelp" class="form-text text-muted">
+                        Save any other changes before adding a new size
+                    </small>
+                </div>
+            <% end %>
+            <br/>
+            <ul class='list-group'>
+                <%= render 'product_size'%>
+            </ul>
+        </div>
+        <div class="col-md-6" style="padding-right: 30px;">
+            <%= form_for @product_style,
+                :html => {:class => 'form-inline'} do |s| %>
+                <div class='form-group'>
+                    <%= s.hidden_field :product_id, value: @product.product_id %>
+                    <div class='input-group'>
+                        <span class="input-group-addon">
+                            <strong>Enabled </strong>
+                            <%= s.check_box :active_style,
+                                class: 'checkbox-control'%>
+                        </span>
+                        <%= s.text_field :product_style_name,
+                            class: 'form-control', placeholder: "Product Style" %>
+                    </div>
+                    <%= button_tag(type:'submit',
+                        class: "btn btn-success background-color") do %>
+                        <span class="glyphicon glyphicon-plus">
+                            <div class="hidden-text">
+                                Save Product Style
+                            </div>
+                        </span>
+                    <% end %>
+                    <br/>
+                    <small id="input_dateHelp" class="form-text text-muted">
+                        Save any other changes before adding a new style
+                    </small>
+                </div>
+            <% end %>
+            <br/>
+            <ul class='list-group'>
+                <%= render 'product_style'%>
+            </ul>
+        </div>
+    </div>
+<% end %>
+<% else %>
+        <%
+            flash[:danger] = "Uh Oh! The form didn't build correctly! Try Again!"
+        %>
+<% end %>

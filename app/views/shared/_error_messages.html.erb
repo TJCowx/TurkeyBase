@@ -1,6 +1,6 @@
 <% if object.errors.any? %>
   <div class="alert alert-danger">
-    There are <%= pluralize(object.errors.count, "error") %>.
+    There <%= object.errors.count > 1 ? 'are' : 'is' %> <%= pluralize(object.errors.count, "error") %>.
   </div>
   <ul>
     <% object.errors.full_messages.each do |msg| %>
