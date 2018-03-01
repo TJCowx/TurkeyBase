@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
     # New & Managing Users
     get     '/users',    to: 'users#index'
+    post    '/users/:id', to: 'users#toggle'
     get     '/new_user', to: 'users#new'
     post    '/new_user', to: 'users#create'
 
@@ -35,7 +36,7 @@ Rails.application.routes.draw do
     # TODO: Set the onlys for the resources
     resources :users
     resources :order_seasons
-    resources :order_season_pickup_dates, only: [:new, :create, :destroy]
+    resources :pickup_dates, only: [:new, :create, :destroy]
     resources :products
     resources :product_sizes
     resources :product_styles

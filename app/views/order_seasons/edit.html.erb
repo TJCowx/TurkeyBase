@@ -35,7 +35,7 @@
 
 <div id='input_date' style="display:none;">
     <!-- Add a Pickup date -->
-    <%= form_for(@order_season_pickup_date,
+    <%= form_for(@pickup_date,
         :html => {:class => 'form-inline'}) do |f| %>
         <%= f.hidden_field :order_season_id, value: @order_season.order_season_id %>
         <div class='form-group'>

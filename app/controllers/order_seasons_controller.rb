@@ -9,7 +9,7 @@ class OrderSeasonsController < ApplicationController
     def edit
         @order_season = OrderSeason.find(params[:id])           # Get the order season selected
         @pickup_dates = PickupDate.where(:order_season_id => @order_season.order_season_id)  # Get the pickup dates in the order season
-        @order_season_pickup_date = PickupDate.new   # For adding a new pickup date
+        @pickup_date = PickupDate.new   # For adding a new pickup date
     end
 
     # Deleting the order season
