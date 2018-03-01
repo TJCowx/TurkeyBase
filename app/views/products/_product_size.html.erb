@@ -1,0 +1,21 @@
+<% @product_sizes.each do |x| %>
+    <div class="list-group-item">
+        <span>
+            <% if x.active_size? %>
+                Enabled
+            <% else %>
+                Disabled
+            <% end %>
+            <%= link_to x, method: :toggle do %>
+                <button type='button' class='button-style'>Toggle</button>
+            <% end %>
+        </span>
+        |
+        <%= x.product_size_name %>
+        <span class="badge back-warning" style="vertical-align: middle;">
+            <%= link_to "Delete", x, method: :delete,
+                data: {confirm:"Do you want to delete #{x.product_size_name}"},
+                class: "back-warning" %>
+        </span>
+    </div>
+<% end %>
