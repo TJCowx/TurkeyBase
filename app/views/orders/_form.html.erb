@@ -34,18 +34,15 @@
                 Product.order(:product_name), :product_id, :product_name,
                 {include_blank: true}, {class: 'form-control'} %>
         </div>
-    </div> <!-- End of Product Line -->
-    <br/>
-    <!-- Product Size line -->
-    <div class="row">
-        <div class="col-md-6 col-md-offset-6">
+        <!-- Product Size -->
+        <div class='col-md-6'>
             <%= f.label :product_size_id, 'Size' %>
             <%= f.grouped_collection_select :product_sizes_id,
                 Product.order(:product_name), :product_sizes,
                 :product_name, :product_size_id,:product_size_name,
                 {include_blank: true}, {class: 'form-control'} %>
-        </div>
-    </div> <!-- End of Size Line -->
+        </div> <!-- End of Product Size -->
+    </div> <!-- End of Product Line -->
     <br/>
     <!-- Product Style line -->
     <div class="row">
@@ -58,9 +55,23 @@
         </div>
     </div> <!-- End of Style Line -->
     <br/>
+    <div class="row">
+        <div class='col-md-6'>
+            <%= f.label :pickup_date_id, 'Pickup Date'%>
+            <%= f.collection_select :pickup_dates_id,
+                :pickup_date_id, :pickup_date, {include_blank: true}, {class:'form-control'}
+            %>
+        </div>
+    </div>
+    <br/>
     <!-- Special Request line -->
     <div class="row">
-
+        <div class="col-md-12">
+        <%= f.label :order_requests, 'Special Requests' %>
+        <%= f.text_area :order_requests, class: 'form-control',
+            maxLength: '255',
+            placeholder: 'Enter any special requests here. (Max 255 characters)' %>
+        </div>
     </div> <!-- End of Special Request Line -->
     <br/>
     <!-- Employee line -->
@@ -68,14 +79,14 @@
         <div class="col-md-6">
             <%= f.label :user_id, "Employee" %>
             <%= f.collection_select :users_id,
-                User.order(:user_id), :user_id, :user_id,
+                User.where(:login_role => false).order(:user_id), :user_id, :user_id,
                 {include_blank: true}, {class: 'form-control'}%>
         </div>
     </div> <!-- End of Employee Line -->
     <br/>
     <!-- Submit row -->
     <div class="row">
-        <div class="col-md-6 col-md-offset-6">
+        <div class="col-md-12">
             <%= f.submit yield(:button_text), class: 'btn btn-success submit-style' %>
         </div>
     </div> <!-- End of the submit row -->

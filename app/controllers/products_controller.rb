@@ -15,14 +15,12 @@ class ProductsController < ApplicationController
         # Save the product, if it doesn't save show errors, else show success message
         # and redirect to the products index page
         if @product.save
-
-
+            # Save the product style
             @product_style = ProductStyle.new(:product_id => @product.product_id,
                 :product_style_name => product_params[:style],
                 :active_style => product_params[:select_style])
             @product_style.save
-
-
+            # Save the product size
             @product_size = ProductSize.new(:product_id => @product.product_id,
                 :product_size_name => product_params[:size],
                 :active_size => product_params[:select_size])

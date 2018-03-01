@@ -13,7 +13,13 @@ class OrdersController < ApplicationController
     # Creates the order into the system
     # Then redirects to another new order page
     def create
-
+        @order = Order.new(order_params)
+        if @order.save
+            flash[:success] = "#{@order.cust_fname} #{@order.cust_lname}'s order has been added!'"
+            redirect_to products_path
+        else
+            render 'new'
+        end
     end
 
     # Loads the Order into the fields for it to be updated
@@ -25,4 +31,11 @@ class OrdersController < ApplicationController
     def update
 
     end
+
+    protected
+        def order_params
+            params.require(:order).permit(:order_id, :cust_fname, :cust_lname,
+                :cust_phone, :products_id, :product_sizes_id, :product_styles_id,
+                :pickup_dates_id, :order_requests, :users_id, :order_season)
+        end
 end

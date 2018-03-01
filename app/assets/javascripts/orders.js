@@ -10,9 +10,16 @@ jQuery(function() {
     // Store the sizing and styles
     product_sizes = $('#order_product_sizes_id').html();
     product_styles = $('#order_product_styles_id').html();
-    // Initially disable the size & style select boxes
-    $('#order_product_sizes_id').prop('disabled', true);
-    $('#order_product_styles_id').prop('disabled', true);
+    // Initially disable the size & style select boxes if the
+    // select menu is empty
+    if (!$('#order_product_sizes_id').val()) {
+        $('#order_product_sizes_id').empty();
+        $('#order_product_sizes_id').prop('disabled', true);
+    }
+    if (!$('#order_product_styles_id').val()) {
+        $('#order_product_styles_id').empty();
+        $('#order_product_styles_id').prop('disabled', true);
+    }
 
     // On the changing of the products select, allocate
     // the size & style select boxes
