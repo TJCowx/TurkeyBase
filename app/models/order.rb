@@ -16,6 +16,6 @@ class Order < ApplicationRecord
     validates :product_styles_id, presence: true
     validates :product_sizes_id, presence: true
     validates :order_requests, length: {maximum: 255}
-    validates :user, presence: true
+    validates :users_id, presence: true
 
 end

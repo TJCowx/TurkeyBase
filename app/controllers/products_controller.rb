@@ -67,6 +67,11 @@ class ProductsController < ApplicationController
     def update
         # Get the product to be updated
         @product = Product.find(params[:id])
+        @product_styles = ProductStyle.where(:product_id => @product.product_id)
+        @product_sizes = ProductSize.where(:product_id => @product.product_id)
+        @product_style = ProductStyle.new
+        @product_size = ProductSize.new
+
 
         # Update the attributes, if not updated show errors
         if @product.update_attributes(product_params)

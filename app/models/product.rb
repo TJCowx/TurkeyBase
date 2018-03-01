@@ -13,8 +13,8 @@ class Product < ApplicationRecord
     validate :validate_size_style
     validates :size, presence: true, on: :create
     validates :style, presence: true, on: :create
-    validates :size, length: {minimum: 3, maximum: 20}
-    validates :style, length: {minimum: 3, maximum: 20}
+    validates :size, length: {minimum: 3, maximum: 20}, on: :create
+    validates :style, length: {minimum: 3, maximum: 20}, on: :create
 
     private
     def validate_size_style
