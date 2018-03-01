@@ -13,7 +13,6 @@
 //= require jquery
 //= require rails-ujs
 //= require bootstrap-datepicker
-//= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
 //= require ./konami

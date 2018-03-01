@@ -1,0 +1,93 @@
+<%= form_for @order do |f| %>
+    <!-- Error Messages on the form -->
+    <%= render 'shared/error_messages', object: @order %>
+
+    <!-- Name line -->
+    <div class="row">
+        <!-- First Name -->
+        <div class="col-md-6">
+            <%= f.label :cust_fname, 'First Name'%>
+            <%= f.text_field :cust_fname, class:'form-control', placeholder:'First Name' %>
+        </div><!-- End of First Name -->
+
+        <!-- Last Name -->
+        <div class="col-md-6">
+            <%= f.label :cust_lname, 'Last Name' %>
+            <%= f.text_field :cust_lname, class: 'form-control', placeholder: 'Last Name' %>
+        </div><!-- End of Last Name -->
+
+    </div> <!-- End of Name Line -->
+    <br/>
+    <!-- Phone # line -->
+    <div class="row">
+        <div class="col-md-6">
+            <%= f.label :cust_phone, 'Phone Number' %>
+            <%= f.text_field :cust_phone, class: 'form-control', placeholder: 'Phone Number'%>
+        </div>
+    </div> <!-- End of Phone # Line -->
+    <br/>
+    <!-- Product line -->
+    <div class="row">
+        <div class="col-md-6">
+            <%= f.label :product_id %>
+            <%= f.collection_select :products_id,
+                Product.order(:product_name), :product_id, :product_name,
+                {include_blank: true}, {class: 'form-control'} %>
+        </div>
+        <!-- Product Size -->
+        <div class='col-md-6'>
+            <%= f.label :product_size_id, 'Size' %>
+            <%= f.grouped_collection_select :product_sizes_id,
+                Product.order(:product_name), :product_sizes,
+                :product_name, :product_size_id,:product_size_name,
+                {include_blank: true}, {class: 'form-control'} %>
+        </div> <!-- End of Product Size -->
+    </div> <!-- End of Product Line -->
+    <br/>
+    <!-- Product Style line -->
+    <div class="row">
+        <div class="col-md-6 col-md-offset-6">
+            <%= f.label :product_style_id, 'Style' %>
+            <%= f.grouped_collection_select :product_styles_id,
+                Product.order(:product_name), :product_styles,
+                :product_name, :product_style_id,:product_style_name,
+                {include_blank: true}, {class: 'form-control'} %>
+        </div>
+    </div> <!-- End of Style Line -->
+    <br/>
+    <div class="row">
+        <div class='col-md-6'>
+            <%= f.label :pickup_date_id, 'Pickup Date'%>
+            <%= f.collection_select :pickup_dates_id,
+                :pickup_date_id, :pickup_date, {include_blank: true}, {class:'form-control'}
+            %>
+        </div>
+    </div>
+    <br/>
+    <!-- Special Request line -->
+    <div class="row">
+        <div class="col-md-12">
+        <%= f.label :order_requests, 'Special Requests' %>
+        <%= f.text_area :order_requests, class: 'form-control',
+            maxLength: '255',
+            placeholder: 'Enter any special requests here. (Max 255 characters)' %>
+        </div>
+    </div> <!-- End of Special Request Line -->
+    <br/>
+    <!-- Employee line -->
+    <div class="row">
+        <div class="col-md-6">
+            <%= f.label :user_id, "Employee" %>
+            <%= f.collection_select :users_id,
+                User.where(:login_role => false).order(:user_id), :user_id, :user_id,
+                {include_blank: true}, {class: 'form-control'}%>
+        </div>
+    </div> <!-- End of Employee Line -->
+    <br/>
+    <!-- Submit row -->
+    <div class="row">
+        <div class="col-md-12">
+            <%= f.submit yield(:button_text), class: 'btn btn-success submit-style' %>
+        </div>
+    </div> <!-- End of the submit row -->
+<% end %>

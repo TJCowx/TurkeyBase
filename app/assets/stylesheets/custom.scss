@@ -10,11 +10,17 @@
   color: white;
 }
 
-
 .submit-style {
     background-color: #2b543b;
     border-color: black;
     width: 100%;
+}
+
+.button-style {
+    background-color: #2b543b;
+    border-color: transparent;
+    color: white;
+    border-radius: 8px;
 }
 
 .hidden-text {
@@ -27,4 +33,23 @@
 
 .background-color {
     background-color: #2b543b;
+}
+
+.right-border {
+    border-right: 1px solid #000;
+    padding-right: 20px;
+}
+
+.border-between > [class*='col-']:before {
+   background: #e3e3e3;
+   bottom: 0;
+   content: " ";
+   left: 0;
+   position: absolute;
+   width: 1px;
+   top: 0;
+}
+
+.border-between > [class*='col-']:first-child:before {
+   display: none;
 }
