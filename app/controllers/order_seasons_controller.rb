@@ -97,6 +97,16 @@ class OrderSeasonsController < ApplicationController
 
     end
 
+    # List the orders in the selected order season
+    def list_orders
+        # Get all the order seasons
+        @order_seasons = OrderSeason.all
+        # Get the current selected season
+        @order_season = OrderSeason.find(params[:id])
+        # Get all the orders in the current selected season
+        @orders = Order.where(:order_season_id => params[:id])
+    end
+
 
     protected
         # Get the order season params, with the pickup_date params

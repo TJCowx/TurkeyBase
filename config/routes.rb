@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     # New & managing Orders
     get     '/new_order', to: 'orders#new'
     post    '/new_order', to: 'orders#create'
-
+    get     '/order_seasons/:id/orders', to: "order_seasons#list_orders", as: :list_orders
 
     # TODO: Set the onlys for the resources
     resources :users

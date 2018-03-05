@@ -5,7 +5,7 @@ class Order < ApplicationRecord
     has_one :product_size
     has_one :user
     has_one :pickup_date
-    has_one :order_season, :through => :order_season_pickup_date
+    has_one :order_season, :through => :pickup_date
 
     # Validation
     validates :cust_fname, presence: true

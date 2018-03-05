@@ -36,6 +36,6 @@ class OrdersController < ApplicationController
         def order_params
             params.require(:order).permit(:order_id, :cust_fname, :cust_lname,
                 :cust_phone, :products_id, :product_sizes_id, :product_styles_id,
-                :pickup_dates_id, :order_requests, :users_id, :order_season)
+                :pickup_dates_id, :order_requests, :users_id, :order_season_id)
         end
 end
