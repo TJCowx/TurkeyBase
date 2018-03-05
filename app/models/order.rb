@@ -18,4 +18,8 @@ class Order < ApplicationRecord
     validates :order_requests, length: {maximum: 255}
     validates :users_id, presence: true
 
+    # Toggles the picked up boolean
+    def toggle_pickup!
+        update picked_up: !picked_up
+    end
 end

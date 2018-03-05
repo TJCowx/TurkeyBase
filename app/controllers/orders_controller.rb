@@ -33,6 +33,22 @@ class OrdersController < ApplicationController
         redirect_to list_orders_path(current_season)
     end
 
+    # Deletes the order
+    def destroy
+        # Delete the order
+        @order = Order.find(params[:id]).destroy
+
+        # Redirect back to the order list with a success message
+        flash[:success] = "#{@order.cust_fname} #{@order.cust_lname}\'s order successfully deleted!"
+        redirect_to list_orders_path(current_season)
+    end
+
+    # Toggles the picked up action on an order
+    def toggle_picked_up
+        @order = Order.find(params[:id]).toggle_pickup!
+        redirect_back fallback_location: '/order_seasons/' + params[:id] + "/orders"
+    end
+
     protected
         def order_params
             params.require(:order).permit(:order_id, :cust_fname, :cust_lname,

@@ -91,4 +91,10 @@
             <%= f.submit yield(:button_text), class: 'btn btn-success submit-style' %>
         </div>
     </div> <!-- End of the submit row -->
+    <% if(!@order.new_record?) %>
+        <br/>
+        <%= link_to "Delete Order", @order, method: :delete,
+                    data: {confirm:"Do you want to delete #{@order.cust_fname} #{@order.cust_lname}'s order?'"}
+        %>
+    <% end %>
 <% end %>

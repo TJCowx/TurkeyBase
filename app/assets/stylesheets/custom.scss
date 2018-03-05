@@ -35,6 +35,10 @@
     background-color: #2b543b;
 }
 
+.background-color:hover {
+    background-color: #489165;
+}
+
 .green-hover:hover {
     background-color: #489165;
 }
@@ -42,6 +46,10 @@
 .right-border {
     border-right: 1px solid #000;
     padding-right: 20px;
+}
+
+.orders tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
 
 .border-between > [class*='col-']:before {

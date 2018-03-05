@@ -11,6 +11,14 @@
     </div>
     <script>
         $(function() {
+            // Resizes the container for a better view of the table
+            $("#container").css(
+                {'padding-left': '5%',
+                'padding-right' :'5%;'}
+            );
+
+            // Turns the dropdown of the order seasons into a link
+            // Allows easy swapping of order seasons
             $('#order_season_id').bind('change', function() {
                 var url = "/order_seasons/"+ $(this).val() +"/orders";
                 if(url) {
@@ -22,7 +30,7 @@
     </script>
 </div>
 <br/>
-<table id="orders">
+<table id="orders" class="orders">
     <thead>
         <tr>
             <th>Last Name</th>
@@ -31,7 +39,8 @@
             <th>Product</th>
             <th>Size</th>
             <th>Style</th>
-            <th>Picked Up</th>
+            <th>Date</th>
+            <th>Status</th>
             <th>Manage</th>
         </tr>
     </thead>

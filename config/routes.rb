@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     get     '/new_order', to: 'orders#new'
     post    '/new_order', to: 'orders#create'
     get     '/order_seasons/:id/orders', to: "order_seasons#list_orders", as: :list_orders
+    post    '/orders/:id', to: "orders#toggle_picked_up"
 
     # TODO: Set the onlys for the resources
     resources :users
