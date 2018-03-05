@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+    include ApplicationHelper
     # List of the orders in the current season
     def index
 
@@ -24,12 +25,12 @@ class OrdersController < ApplicationController
 
     # Loads the Order into the fields for it to be updated
     def edit
-
+        @order = Order.find(params[:id])
     end
 
     # updates the order then redirects back
     def update
-
+        redirect_to list_orders_path(current_season)
     end
 
     protected

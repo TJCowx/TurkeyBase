@@ -6,5 +6,5 @@
     <td><%= ProductSize.where(:product_size_id => order.product_sizes_id).pluck(:product_size_name).first %></td>
     <td><%= ProductStyle.where(:product_style_id => order.product_styles_id).pluck(:product_style_name).first %></td>
     <td>Picked Up</td>
-    <td>Manage</td>
+    <td><%= link_to 'Manage', edit_order_path(order) %></td>
 </tr>

@@ -5,9 +5,21 @@
 <div>
     <div class='form-inline'>
     <strong>Season: </strong>
-        <%= collection_select(:order_season, :order_season_id, @order_seasons.order(:order_season_name),
-            :order_season_id, :order_season_name, {include_blank: true}, {class: 'form-control'}) %>
+        <%= select_tag 'order_season_id',
+            options_from_collection_for_select(@order_seasons, "order_season_id", "order_season_name", params[:id]),
+            class: 'form-control' %>
     </div>
+    <script>
+        $(function() {
+            $('#order_season_id').bind('change', function() {
+                var url = "/order_seasons/"+ $(this).val() +"/orders";
+                if(url) {
+                    window.location.href = url;
+                }
+                return false;
+            });
+        });
+    </script>
 </div>
 <br/>
 <table id="orders">
