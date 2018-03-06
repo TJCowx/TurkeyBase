@@ -108,6 +108,8 @@ class OrderSeasonsController < ApplicationController
         @orders = Order.where(:order_season_id => params[:id])
         # Get all the products
         @product_orders = Product.all
+        # Get all the dates within the order season
+        @dates = PickupDate.where(:order_season_id => params[:id])
     end
 
 

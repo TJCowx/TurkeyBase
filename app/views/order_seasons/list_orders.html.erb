@@ -53,13 +53,15 @@
 <br/>
 <span class="glyphicon glyphicon-print"></span> Printable List
 <br/><hr/>
-<h2>Running Totals</h2>
+<h2 style="text-decoration: underline;">Running Totals</h2>
 <div class="row">
     <%= render :partial => '/orders/product_order_details',
         :locals => {:product => @product_orders} %>
 </div>
 <br/>
 <hr/>
+<h3>Dates</h3>
 <div class="row">
-
+    <%= render :partial => '/orders/date_order_details' %>
 </div>
+<hr/>

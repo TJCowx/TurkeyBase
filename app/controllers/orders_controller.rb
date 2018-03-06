@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
     # Then redirects to another new order page
     def create
         @order = Order.new(order_params)
+        @order.picked_up = false    # Set the picked up to false when created
         if @order.save
             flash[:success] = "#{@order.cust_fname} #{@order.cust_lname}'s order has been added!"
             redirect_to new_order_path
@@ -31,7 +32,18 @@ class OrdersController < ApplicationController
 
     # updates the order then redirects back
     def update
-        redirect_to list_orders_path(current_season)
+        @order = Order.find(params[:id])
+
+        # Update the attributes, redirect with success, show errors
+        # on fail
+        if @order.update_attributes(order_params)
+            # Redirect back to the order list with a success message
+            flash[:success] = "#{@order.cust_fname} #{@order.cust_lname}\'s order successfully updated!"
+            redirect_to list_orders_path(current_season)
+        else
+            render 'edit'
+        end
+
     end
 
     # Deletes the order
@@ -39,9 +51,10 @@ class OrdersController < ApplicationController
         # Delete the order
         @order = Order.find(params[:id]).destroy
 
-        # Redirect back to the order list with a success message
+        # Redirect back with a success message
         flash[:success] = "#{@order.cust_fname} #{@order.cust_lname}\'s order successfully deleted!"
         redirect_to list_orders_path(current_season)
+
     end
 
     # Toggles the picked up action on an order
