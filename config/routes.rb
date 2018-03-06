@@ -35,13 +35,13 @@ Rails.application.routes.draw do
     post    '/orders/:id', to: "orders#toggle_picked_up"
 
     # TODO: Set the onlys for the resources
-    resources :users
-    resources :order_seasons
+    resources :users, except: [:new, :create, :toggle, :index]
+    resources :order_seasons, except: [:new, :create]
     resources :pickup_dates, only: [:new, :create, :destroy]
-    resources :products
+    resources :products, except: [:new, :create, :index]
     resources :product_sizes
     resources :product_styles
-    resources :orders
+    resources :orders, except: [:new, :create, :toggle_picked_up]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
