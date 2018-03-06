@@ -30,24 +30,26 @@
     </script>
 </div>
 <br/>
-<table id="orders" class="orders">
-    <thead>
-        <tr>
-            <th>Last Name</th>
-            <th>First Name</th>
-            <th>Phone Number</th>
-            <th>Product</th>
-            <th>Size</th>
-            <th>Style</th>
-            <th>Date</th>
-            <th>Status</th>
-            <th>Manage</th>
-        </tr>
-    </thead>
-    <tbody>
-        <%= render @orders %>
-    </tbody>
-</table>
+<div style="overflow-x:auto;">
+    <table id="orders" class="orders">
+        <thead>
+            <tr>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Phone Number</th>
+                <th>Product</th>
+                <th>Size</th>
+                <th>Style</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Manage</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%= render @orders %>
+        </tbody>
+    </table>
+</div>
 <br/>
 <span class="glyphicon glyphicon-print"></span> Printable List
 <br/><hr/>

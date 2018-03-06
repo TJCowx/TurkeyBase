@@ -6,7 +6,7 @@ jQuery(function() {
         // Instantiate the datatable
         var table = $('#orders').DataTable({
             'columnDefs' : [{
-                'targets' : [7],
+                'targets' : [8],
                 'orderable' : false
             }]
         });
