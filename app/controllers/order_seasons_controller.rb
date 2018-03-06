@@ -105,6 +105,8 @@ class OrderSeasonsController < ApplicationController
         @order_season = OrderSeason.find(params[:id])
         # Get all the orders in the current selected season
         @orders = Order.where(:order_season_id => params[:id])
+        # Get all the products
+        @product_orders = Product.all
     end
 
 
