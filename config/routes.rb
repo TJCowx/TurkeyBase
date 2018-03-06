@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     resources :products, except: [:new, :create, :index]
     resources :product_sizes
     resources :product_styles
-    resources :orders, except: [:new, :create, :toggle_picked_up]
+    resources :orders, except: [:new, :toggle_picked_up]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

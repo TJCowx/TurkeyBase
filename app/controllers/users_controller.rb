@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user   # Validates to check if the user is logged in
-  before_action :admin_user       # Validates to check if the user is an admin
-
+    
   # Gets all the users into a list that aren't admins
   def index
     # Selects all non-admin login users

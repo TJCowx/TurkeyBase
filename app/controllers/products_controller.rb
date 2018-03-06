@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-
+    
     # For the new view. Loads a new product
     def new
         @product = Product.new

@@ -1,4 +1,5 @@
 class ProductStylesController < ApplicationController
+    
     def create
         @product_style = ProductStyle.new(product_style_params)
 

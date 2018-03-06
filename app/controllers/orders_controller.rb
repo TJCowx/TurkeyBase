@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+    skip_before_action :require_admin
     include ApplicationHelper
     # List of the orders in the current season
     def index
@@ -16,8 +17,8 @@ class OrdersController < ApplicationController
     def create
         @order = Order.new(order_params)
         if @order.save
-            flash[:success] = "#{@order.cust_fname} #{@order.cust_lname}'s order has been added!'"
-            redirect_to products_path
+            flash[:success] = "#{@order.cust_fname} #{@order.cust_lname}'s order has been added!"
+            redirect_to new_order_path
         else
             render 'new'
         end

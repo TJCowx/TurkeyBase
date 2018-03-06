@@ -1,4 +1,5 @@
 class OrderSeasonsController < ApplicationController
+    skip_before_action :require_admin, only: :list_orders
     # Renders a list of products
     def index
         # Get all the order seasons, active season first, then sort alphibetically
