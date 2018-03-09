@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180304023502) do
+ActiveRecord::Schema.define(version: 20180308201148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "order_season_products", force: :cascade do |t|
+    t.bigint "order_seasons_id"
+    t.bigint "products_id"
+    t.index ["order_seasons_id"], name: "index_order_season_products_on_order_seasons_id"
+    t.index ["products_id"], name: "index_order_season_products_on_products_id"
+  end
 
   create_table "order_seasons", primary_key: "order_season_id", id: :integer, default: -> { "nextval('custom_order_season_id_seq'::regclass)" }, force: :cascade do |t|
     t.string "order_season_name"
