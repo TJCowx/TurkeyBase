@@ -20,8 +20,10 @@ class OrderSeasonProductsController < ApplicationController
     end
 
     # Removed the order season product
-    def delete
-
+    def destroy
+        OrderSeasonProduct.find(params[:id]).destroy   # Deletes the product from the season
+        flash[:success] = "The product was successfully removed!"
+        redirect_back fallback_location: '/order_season'
     end
 
     protected
@@ -29,6 +31,4 @@ class OrderSeasonProductsController < ApplicationController
         def order_season_product_params
             params.require(:order_season_product).permit(:order_seasons_id, :products_id)
         end
-
-
 end

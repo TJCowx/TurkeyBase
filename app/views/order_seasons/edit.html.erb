@@ -112,6 +112,12 @@
                 </span>
             </button>
         </div>
+        <br/>
+        <ul class='list-group'>
+            <%= render :partial => '/order_season_products/order_season_product',
+                :locals =>{:order_season => @order_season_products } %>
+        </ul>
+
     </div>
 
 </div>

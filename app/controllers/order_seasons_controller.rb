@@ -13,7 +13,7 @@ class OrderSeasonsController < ApplicationController
         @pickup_date = PickupDate.new   # For adding a new pickup date
         @product = OrderSeasonProduct.new  # For adding a new product to the season
         @non_added_products = Product.all
-        @added_products = Product.all
+        @order_season_products = OrderSeasonProduct.where(:order_seasons_id => @order_season.order_season_id)
     end
 
     # Deleting the order season
