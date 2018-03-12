@@ -11,6 +11,9 @@ class OrderSeasonsController < ApplicationController
         @order_season = OrderSeason.find(params[:id])           # Get the order season selected
         @pickup_dates = PickupDate.where(:order_season_id => @order_season.order_season_id)  # Get the pickup dates in the order season
         @pickup_date = PickupDate.new   # For adding a new pickup date
+        @product = OrderSeasonProduct.new  # For adding a new product to the season
+        @non_added_products = Product.all
+        @added_products = Product.all
     end
 
     # Deleting the order season
@@ -83,7 +86,7 @@ class OrderSeasonsController < ApplicationController
             # season listing
             flash[:success] = "Order Season: #{@order_season.order_season_name}
                 has been added!"
-            redirect_to order_seasons_url
+            redirect_to edit_order_season_url(@order_season)
 
         else
             render 'new'
@@ -94,8 +97,6 @@ class OrderSeasonsController < ApplicationController
     def set_active_order_season
         # Set any active ordering season to false
         OrderSeason.where(:current_season => true).where.not(:order_season_id => @order_season.order_season_id).update_all(:current_season => false)
-        # Set the current season
-
     end
 
     # List the orders in the selected order season

@@ -28,57 +28,108 @@
     <%= f.submit yield(:button_text), class: "btn btn-success submit-style" %>
 
 <% end %>
+<div class="row">
+    <div class="col-md-6" style="padding-right: 30px;">
+        <div class="page-header">
+            <center><h4>Pickup Dates</h4></center>
+        </div>
 
-<div class="page-header">
-    <h4>Pickup Dates</h4>
-</div>
+        <div id='input_date' style="display:none;">
+            <!-- Add a Pickup date -->
+            <%= form_for(@pickup_date,
+                :html => {:class => 'form-inline'}) do |f| %>
+                <%= f.hidden_field :order_season_id, value: @order_season.order_season_id %>
+                <div class='form-group'>
+                    <%= f.date_field :pickup_date, class: "form-control" %>
+                    <%= button_tag(type:'submit', class: "btn btn-success background-color") do %>
+                        <span class="glyphicon glyphicon-plus">
+                            <div class="hidden-text">
+                                Save Pickup Date
+                            </div>
+                        </span>
+                    <% end %>
+                    <br/>
+                    <small id="input_dateHelp" class="form-text text-muted">
+                        Save any other changes before adding a new date
+                    </small>
+                </div>
+            <% end %>
+        </div>
 
-<div id='input_date' style="display:none;">
-    <!-- Add a Pickup date -->
-    <%= form_for(@pickup_date,
-        :html => {:class => 'form-inline'}) do |f| %>
-        <%= f.hidden_field :order_season_id, value: @order_season.order_season_id %>
-        <div class='form-group'>
-            <%= f.date_field :pickup_date, class: "form-control" %>
-            <%= button_tag(type:'submit', class: "btn btn-success background-color") do %>
+        <div id='new_date'>
+            <!-- Show pickup date form button -->
+            <button id='add-date' class="btn btn-success background-color">
                 <span class="glyphicon glyphicon-plus">
                     <div class="hidden-text">
-                        Save Pickup Date
+                        Add Pickup Date
                     </div>
                 </span>
-            <% end %>
-            <br/>
-            <small id="input_dateHelp" class="form-text text-muted">
-                Save any other changes before adding a new date
-            </small>
+            </button>
         </div>
-    <% end %>
+
+        <br/>
+
+        <ul class='list-group'>
+            <%= render :partial => '/order_seasons/pickup_date', :locals =>{:order_season => @pickup_dates } %>
+        </ul>
+    </div>
+
+    <div id='style' class="col-md-6" style="padding-right: 30px;">
+        <div class="page-header">
+            <center><h4>Products</h4></center>
+        </div>
+
+        <div id="input_product" class="hidden-text">
+            <!-- Add a Pickup date -->
+            <%= form_for(@product,
+                :html => {:class => 'form-inline'}) do |f| %>
+                <%= f.hidden_field :order_seasons_id, value: @order_season.order_season_id %>
+                <div class='form-group'>
+                    <%= f.collection_select(:products_id, @non_added_products, "product_id", "product_name",
+                        {}, {:class => 'form-control'}) %>
+                    <%= button_tag(type:'submit', class: "btn btn-success background-color") do %>
+                        <span class="glyphicon glyphicon-plus">
+                            <div class="hidden-text">
+                                Save New Product
+                            </div>
+                        </span>
+                    <% end %>
+                    <br/>
+                    <small id="input_dateHelp" class="form-text text-muted">
+                        Save any other changes before adding a new product
+                    </small>
+                </div>
+            <% end %>
+        </div>
+
+        <div id='new_product'>
+            <!-- Show pickup date form button -->
+            <button id='add-product' class="btn btn-success background-color">
+                <span class="glyphicon glyphicon-plus">
+                    <div class="hidden-text">
+                        Add New Product to the Season
+                    </div>
+                </span>
+            </button>
+        </div>
+    </div>
+
 </div>
-
-<div id='new_date'>
-    <!-- Show pickup date form button -->
-    <button id='add-date' class="btn btn-success background-color">
-        <span class="glyphicon glyphicon-plus">
-            <div class="hidden-text">
-                Add Pickup Date
-            </div>
-        </span>
-    </button>
-</div>
-
-<br/>
-
-<ul class='list-group'>
-    <%= render :partial => '/order_seasons/pickup_date', :locals =>{:order_season => @pickup_dates } %>
-</ul>
-
 <script>
     // Event listener for the "+" button
     document.getElementById('add-date').addEventListener('click', showDateField);
+    document.getElementById('add-product').addEventListener('click', showProductField);
 
     // hide the add button, and show the input form
     function showDateField() {
         document.getElementById('input_date').style.display="block";
         document.getElementById('new_date').style.display="none";
     }
+
+    // Hides the add button and shows the product field
+    function showProductField() {
+        document.getElementById('input_product').style.display="block";
+        document.getElementById('new_product').style.display="none";
+    }
+
 </script>
