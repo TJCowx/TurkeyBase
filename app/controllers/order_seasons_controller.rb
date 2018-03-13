@@ -12,8 +12,11 @@ class OrderSeasonsController < ApplicationController
         @pickup_dates = PickupDate.where(:order_season_id => @order_season.order_season_id)  # Get the pickup dates in the order season
         @pickup_date = PickupDate.new   # For adding a new pickup date
         @product = OrderSeasonProduct.new  # For adding a new product to the season
-        @non_added_products = Product.all
         @order_season_products = OrderSeasonProduct.where(:order_seasons_id => @order_season.order_season_id)
+        # Get all the products that weren't added
+        @ids = @order_season_products.map{|x| x.products_id} # Map the ids of the added products
+        @non_added_products = Product.all.reject {|product| @ids.include? product.product_id}
+
     end
 
     # Deleting the order season

@@ -14,7 +14,7 @@ class OrderSeasonProductsController < ApplicationController
                 redirect_back fallback_location: "/order_season"
             else
                 flash[:danger] = "The product was not added!"
-                redirect_back fallback_location "/order_season"
+                redirect_back fallback_location: "/order_season"
             end
         end
     end
