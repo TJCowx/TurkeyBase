@@ -1,4 +1,5 @@
 class OrderSeasonsController < ApplicationController
+    skip_before_action :require_admin, only: :list_orders
     # Renders a list of products
     def index
         # Get all the order seasons, active season first, then sort alphibetically
@@ -9,7 +10,15 @@ class OrderSeasonsController < ApplicationController
     def edit
         @order_season = OrderSeason.find(params[:id])           # Get the order season selected
         @pickup_dates = PickupDate.where(:order_season_id => @order_season.order_season_id)  # Get the pickup dates in the order season
-        @order_season_pickup_date = PickupDate.new   # For adding a new pickup date
+        @pickup_date = PickupDate.new   # For adding a new pickup date
+        @product = OrderSeasonProduct.new  # For adding a new product to the season
+
+        # Get all the products in the order season
+        @order_season_products = OrderSeasonProduct.where(:order_seasons_id => @order_season.order_season_id)
+        # Get all the products that weren't added
+        @ids = @order_season_products.map{|x| x.products_id} # Map the ids of the added products
+        @non_added_products = Product.all.reject {|product| @ids.include? product.product_id}
+
     end
 
     # Deleting the order season
@@ -82,7 +91,7 @@ class OrderSeasonsController < ApplicationController
             # season listing
             flash[:success] = "Order Season: #{@order_season.order_season_name}
                 has been added!"
-            redirect_to order_seasons_url
+            redirect_to edit_order_season_url(@order_season)
 
         else
             render 'new'
@@ -93,8 +102,20 @@ class OrderSeasonsController < ApplicationController
     def set_active_order_season
         # Set any active ordering season to false
         OrderSeason.where(:current_season => true).where.not(:order_season_id => @order_season.order_season_id).update_all(:current_season => false)
-        # Set the current season
+    end
 
+    # List the orders in the selected order season
+    def list_orders
+        # Get all the order seasons
+        @order_seasons = OrderSeason.all
+        # Get the current selected season
+        @order_season = OrderSeason.find(params[:id])
+        # Get all the orders in the current selected season
+        @orders = Order.where(:order_season_id => params[:id])
+        # Get all the products
+        @product_orders = Product.all
+        # Get all the dates within the order season
+        @dates = PickupDate.where(:order_season_id => params[:id])
     end
 
 
