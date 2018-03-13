@@ -1,0 +1,69 @@
+<% @product_orders.each do |product| %>
+<div class="col-md-6">
+    <h3><%= product.product_name %></h3>
+    <table class ="order-breakdown">
+        <tr class="header">
+            <th></th>
+            <th>Ordered</th>
+            <th>Picked Up</th>
+            <th>Remaining</th>
+        </tr>
+        <tr>
+            <th class="item">Total</th>
+            <td><%= Order.where(:products_id => product.product_id, :order_season_id => params[:id]).count %></td>
+            <td><%= Order.where(:products_id => product.product_id,
+                    :order_season_id => params[:id],
+                    :picked_up => true).count%></td>
+            <td><%= Order.where(:products_id => product.product_id,
+                    :order_season_id => params[:id],
+                    :picked_up => false).count%></td>
+        </tr>
+        <tr class="header">
+            <th class="item"></th>
+            <th colspan='3'><center>Styles</center></th>
+        </tr>
+        <% ProductStyle.where(:product_id => product.product_id).each do |style| %>
+        <tr>
+            <th class="item"><%=style.product_style_name%></th>
+            <td>
+                <%= Order.where(:product_styles_id => style.product_style_id,
+                :order_season_id => params[:id]).count %>
+            </td>
+            <td>
+                <%= Order.where(:product_styles_id => style.product_style_id,
+                :order_season_id => params[:id],
+                :picked_up => true).count %>
+            </td>
+            <td>
+                <%= Order.where(:product_styles_id => style.product_style_id,
+                :order_season_id => params[:id],
+                :picked_up => false).count %>
+            </td>
+        </tr>
+        <% end %>
+        <tr class="header">
+            <th class="item"></th>
+            <th colspan='3'><center>Sizes</center></th>
+        </tr>
+        <% ProductSize.where(:product_id => product.product_id).each do |size| %>
+        <tr>
+            <th class="item"><%=size.product_size_name%></th>
+            <td>
+                <%= Order.where(:product_sizes_id => size.product_size_id,
+                :order_season_id => params[:id]).count %>
+            </td>
+            <td>
+                <%= Order.where(:product_sizes_id => size.product_size_id,
+                :order_season_id => params[:id],
+                :picked_up => true).count %>
+            </td>
+            <td>
+                <%= Order.where(:product_sizes_id => size.product_size_id,
+                :order_season_id => params[:id],
+                :picked_up => false).count %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+</div>
+<% end %>

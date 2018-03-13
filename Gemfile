@@ -40,7 +40,9 @@ gem 'jquery-rails'
 gem 'autoprefixer-rails'
 # For pagination
 gem 'will_paginate', '3.1.5'
-
+# For listing the orders
+gem 'jquery-datatables-rails', '~> 3.4.0'
+gem 'jquery-ui-rails'
 # For the date picker
 gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
                               :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'

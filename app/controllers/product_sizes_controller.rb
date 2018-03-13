@@ -39,6 +39,6 @@ class ProductSizesController < ApplicationController
     protected
         def product_size_params
             params.require(:product_size).permit(:product_id, :product_size_id,
-                :product_size_name)
+                :product_size_name, :active_size)
         end
 end

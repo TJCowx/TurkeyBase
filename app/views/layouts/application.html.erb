@@ -11,7 +11,7 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <div class="container center" style="padding-left: 10%; padding-right: 10%;">
+    <div class="container center" style="padding-left: 10%; padding-right: 10%;" id="container">
         <%= audio_tag('contra-title.mp3', id: 'konami') %>
         <div class="flash-messages">
             <% flash.each do |message_type, message| %>

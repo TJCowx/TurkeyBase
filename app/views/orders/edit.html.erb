@@ -1,0 +1,7 @@
+<%
+    provide(:title, "Edit")
+    provide(:header, "Edit #{@order.cust_fname} #{@order.cust_lname}\'s Order")
+    provide(:button_text, "Update Order")
+%>
+
+<%= render 'form' %>

@@ -16,6 +16,10 @@
     width: 100%;
 }
 
+.centered {
+    margin:auto;
+}
+
 .button-style {
     background-color: #2b543b;
     border-color: transparent;
@@ -35,9 +39,42 @@
     background-color: #2b543b;
 }
 
+.background-color:hover {
+    background-color: #489165;
+}
+
+.green-hover:hover {
+    background-color: #489165;
+}
+
+.thumbnail:hover {
+    background-color: #f2f2f2;
+}
+
 .right-border {
     border-right: 1px solid #000;
     padding-right: 20px;
+}
+
+.orders tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.order-breakdown td, .order-breakdown th {
+    padding-right: 10px;
+}
+
+.order-breakdown td {
+    text-align: center;
+}
+
+.order-breakdown .item {
+    border-right: 1px solid;
+}
+
+.order-breakdown .header{
+    background-color: #f2f2f2;
+    border-bottom: 1px solid;
 }
 
 .border-between > [class*='col-']:before {

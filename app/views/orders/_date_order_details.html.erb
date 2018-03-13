@@ -1,0 +1,24 @@
+<div class="col-md-6">
+    <table class="order-breakdown">
+        <tr class="header">
+            <td></td>
+            <th>Total</th>
+            <th>Picked Up</th>
+            <th>Remaining</th>
+        </tr>
+        <% @dates.each do |date|%>
+            <tr>
+                <th class="item"><%= date.pickup_date %></th>
+                <td><%= Order.where(:pickup_dates_id => date.pickup_date_id).count %></td>
+                <td>
+                    <%= Order.where(:pickup_dates_id => date.pickup_date_id,
+                        :picked_up => true).count %>
+                </td>
+                <td>
+                    <%= Order.where(:pickup_dates_id => date.pickup_date_id,
+                        :picked_up => false).count %>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+</div>

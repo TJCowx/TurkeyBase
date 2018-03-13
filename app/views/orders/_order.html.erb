@@ -1,0 +1,17 @@
+<tr>
+    <td><%= order.cust_lname %></td>
+    <td><%= order.cust_fname %></td>
+    <td><%= order.cust_phone %></td>
+    <td><%= Product.where(:product_id => order.products_id).pluck(:product_name).first %></td>
+    <td><%= ProductSize.where(:product_size_id => order.product_sizes_id).pluck(:product_size_name).first %></td>
+    <td><%= ProductStyle.where(:product_style_id => order.product_styles_id).pluck(:product_style_name).first %></td>
+    <td><%= PickupDate.where(:pickup_date_id => order.pickup_dates_id).pluck(:pickup_date).first %></td>
+    <td>
+        <%= link_to order, method: :cust_picked_up do %>
+        <span class="badge <%= 'background-color' if order.picked_up %>">
+            <%= order.picked_up ? 'Picked Up' : "Ordered" %>
+        </span>
+        <% end %>
+    </td>
+    <td><%= link_to 'Manage', edit_order_path(order) %></td>
+</tr>

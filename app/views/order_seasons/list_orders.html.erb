@@ -1,0 +1,67 @@
+<%
+    provide(:title, "Orders for #{@order_season.order_season_name}")
+    provide(:header, "Orders for #{@order_season.order_season_name}")
+%>
+<div>
+    <div class='form-inline'>
+    <strong>Season: </strong>
+        <%= select_tag 'order_season_id',
+            options_from_collection_for_select(@order_seasons, "order_season_id", "order_season_name", params[:id]),
+            class: 'form-control' %>
+    </div>
+    <script>
+        $(function() {
+            // Resizes the container for a better view of the table
+            $("#container").css(
+                {'padding-left': '5%',
+                'padding-right' :'5%;'}
+            );
+
+            // Turns the dropdown of the order seasons into a link
+            // Allows easy swapping of order seasons
+            $('#order_season_id').bind('change', function() {
+                var url = "/order_seasons/"+ $(this).val() +"/orders";
+                if(url) {
+                    window.location.href = url;
+                }
+                return false;
+            });
+        });
+    </script>
+</div>
+<br/>
+<div style="overflow-x:auto;">
+    <table id="orders" class="orders">
+        <thead>
+            <tr>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Phone Number</th>
+                <th>Product</th>
+                <th>Size</th>
+                <th>Style</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Manage</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%= render @orders %>
+        </tbody>
+    </table>
+</div>
+<br/>
+<span class="glyphicon glyphicon-print"></span> Printable List
+<br/><hr/>
+<h2 style="text-decoration: underline;">Running Totals</h2>
+<div class="row">
+    <%= render :partial => '/orders/product_order_details',
+        :locals => {:product => @product_orders} %>
+</div>
+<br/>
+<hr/>
+<h3>Dates</h3>
+<div class="row">
+    <%= render :partial => '/orders/date_order_details' %>
+</div>
+<hr/>
