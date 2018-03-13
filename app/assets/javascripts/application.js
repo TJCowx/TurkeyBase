@@ -15,4 +15,5 @@
 //= require bootstrap-datepicker
 //= require bootstrap-sprockets
 //= require_tree .
+//= require dataTables/jquery.dataTables
 //= require ./konami

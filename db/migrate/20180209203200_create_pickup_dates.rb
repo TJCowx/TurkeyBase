@@ -1,5 +1,5 @@
 # Order Seasons pickup dates table belongs to the order season table
-class CreateOrderSeasonPickupDates < ActiveRecord::Migration[5.1]
+class CreatePickupDates < ActiveRecord::Migration[5.1]
   def change
     create_table :pickup_dates, {:id => false} do |t|
         t.belongs_to :order_season, index: true

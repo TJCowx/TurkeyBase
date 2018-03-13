@@ -5,11 +5,18 @@
             Admin
         </span>
     <% else %>
-        <span class="badge back-warning">
-            <%= link_to "Delete", user, method: :delete,
-                        data: {confirm:"Do you want to delete #{user.user_id}"},
-                        class: "back-warning" %>
+        <% if !user.active_user? && !user.login_role %>
+            <span class="badge back-warning">
+                    <%= link_to "Delete", user, method: :delete,
+                                data: {confirm:"Do you want to delete #{user.user_id}"},
+                                class: "back-warning" %>
+            </span>
+            <% @enable = "Enable" %>
+        <% else %>
+            <% @enable = "Disable" %>
+        <% end %>
+        <span class="badge">
+            <%= link_to @enable, user, method: :toggle_active, style:"color:white" %>
         </span>
     <% end %>
-
 </li>

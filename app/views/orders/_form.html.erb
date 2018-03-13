@@ -58,7 +58,7 @@
     <div class="row">
         <div class='col-md-6'>
             <%= f.label :pickup_date_id, 'Pickup Date'%>
-            <%= f.collection_select :pickup_dates_id,
+            <%= f.collection_select :pickup_dates_id, PickupDate.where(:order_season_id => current_season),
                 :pickup_date_id, :pickup_date, {include_blank: true}, {class:'form-control'}
             %>
         </div>
@@ -79,15 +79,23 @@
         <div class="col-md-6">
             <%= f.label :user_id, "Employee" %>
             <%= f.collection_select :users_id,
-                User.where(:login_role => false).order(:user_id), :user_id, :user_id,
+                User.where(:login_role => false, :active_user => true).order(:user_id), :user_id, :user_id,
                 {include_blank: true}, {class: 'form-control'}%>
         </div>
     </div> <!-- End of Employee Line -->
     <br/>
+        <%= f.hidden_field :order_season_id, value: current_season.order_season_id %>
     <!-- Submit row -->
     <div class="row">
         <div class="col-md-12">
             <%= f.submit yield(:button_text), class: 'btn btn-success submit-style' %>
         </div>
     </div> <!-- End of the submit row -->
+    <% if(!@order.new_record?) %>
+        <br/>
+        <span class="glyphicon glyphicon-trash"></span>
+        <%= link_to "Delete Order", @order, method: :delete,
+                    data: {confirm:"Do you want to delete #{@order.cust_fname} #{@order.cust_lname}'s order?'"}
+        %>
+    <% end %>
 <% end %>

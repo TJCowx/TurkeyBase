@@ -8,5 +8,9 @@ class User < ApplicationRecord
   has_secure_password     # Needed for hashing password
   # validate the Password for being there & matching confirmation
   validates :password, confirmation: true, allow_nil: true
-  
+
+  def toggle_active!
+      update active_user: !active_user
+  end
+
 end

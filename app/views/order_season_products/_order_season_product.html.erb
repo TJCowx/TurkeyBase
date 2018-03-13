@@ -1,0 +1,15 @@
+<% if @order_season_products.count > 0 %>
+    <% @order_season_products.each do |season_product| %>
+        <% @product = Product.find_by(product_id: season_product.products_id) %>
+        <li class="list-group-item">
+            <%= @product.product_name %>
+            <span class="badge back-warning">
+                <%= link_to "Delete", season_product, method: :delete,
+                    data: {confirm:"Do you want to delete #{@product.product_name}"},
+                    class: "back-warning" %>
+            </span>
+        </li>
+    <% end %>
+<% else %>
+    <h4>Please add a product</h4>
+<% end %>

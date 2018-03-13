@@ -1,5 +1,4 @@
 class PickupDatesController < ApplicationController
-
     # Adds the pickup date into the table
     def create
         @pickup_date = PickupDate.new(pickup_date_params)

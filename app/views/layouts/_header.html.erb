@@ -16,18 +16,18 @@
           <% if logged_in? %>
             <ul class="nav navbar-nav">
               <!-- Dropdown for managing orders -->
-              <li class="dropdown">
+              <li class="dropdown green-hover">
                 <a href="#" class="dropdown-toggle" style="color:white;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                   Orders <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li><a href="/new_order">Add Order</a></li>
-                  <li><a href="#">List Orders</a></li>
+                  <li><%= link_to "List Orders", list_orders_path(current_season) %></li>
                 </ul>
               </li>
               <% if admin? %>
                 <!-- Dropdown for manage Ordering seasons -->
-                <li class="dropdown">
+                <li class="dropdown green-hover">
                   <a href="#" class="dropdown-toggle" style="color:white;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     Ordering Seasons <span class="caret"></span>
                   </a>
@@ -38,7 +38,7 @@
                 </li>
 
                 <!-- Dropdown for managing products -->
-                <li class="dropdown">
+                <li class="dropdown green-hover">
                   <a href="#" class="dropdown-toggle" style="color:white;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     Products <span class="caret"></span>
                   </a>
@@ -49,7 +49,7 @@
                 </li>
 
                 <!-- Dropdown menu for managing users -->
-                <li class="dropdown">
+                <li class="dropdown green-hover">
                   <a href="#" class="dropdown-toggle" style="color:white;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     Users <span class="caret"></span>
                   </a>
@@ -58,13 +58,17 @@
                     <li><a href="/users">Manage Users</a></li>
                   </ul>
                 </li>
+
               <% end %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li class="link navbar-right"><%= link_to "Logout", logout_path, style: "color:white;", method: :delete%></li>
+              <li class="link navbar-right green-hover"><%= link_to "Logout", logout_path, style: "color:white;", method: :delete%></li>
+              <% if admin? %>
+                <li class="link navbar-right green-hover"><%= link_to current_user.user_id, edit_user_path(current_user), style:"color:white" %></li>
+              <% end %>
             </ul>
           <% else %>
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right green-hover">
               <li class="link" ><%= link_to "Login", login_path, style: "color: white;" %></li>
             </ul>
           <% end %>

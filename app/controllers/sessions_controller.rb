@@ -1,4 +1,8 @@
 class SessionsController < ApplicationController
+    # Let the non-logged in users access this controller
+    skip_before_action :require_login
+    skip_before_action :require_admin
+
   # For displaying the login page
   def new
   end

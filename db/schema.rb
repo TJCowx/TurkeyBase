@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180225214139) do
+ActiveRecord::Schema.define(version: 20180308201148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "order_season_products", force: :cascade do |t|
+    t.bigint "order_seasons_id"
+    t.bigint "products_id"
+    t.index ["order_seasons_id"], name: "index_order_season_products_on_order_seasons_id"
+    t.index ["products_id"], name: "index_order_season_products_on_products_id"
+  end
 
   create_table "order_seasons", primary_key: "order_season_id", id: :integer, default: -> { "nextval('custom_order_season_id_seq'::regclass)" }, force: :cascade do |t|
     t.string "order_season_name"
@@ -26,12 +33,14 @@ ActiveRecord::Schema.define(version: 20180225214139) do
     t.string "cust_phone"
     t.string "order_requests"
     t.boolean "picked_up"
-    t.bigint "users_id"
-    t.bigint "order_season_pickup_dates_id"
+    t.string "users_id"
+    t.bigint "pickup_dates_id"
     t.bigint "products_id"
     t.bigint "product_styles_id"
     t.bigint "product_sizes_id"
-    t.index ["order_season_pickup_dates_id"], name: "index_orders_on_order_season_pickup_dates_id"
+    t.bigint "order_season_id"
+    t.index ["order_season_id"], name: "index_orders_on_order_season_id"
+    t.index ["pickup_dates_id"], name: "index_orders_on_pickup_dates_id"
     t.index ["product_sizes_id"], name: "index_orders_on_product_sizes_id"
     t.index ["product_styles_id"], name: "index_orders_on_product_styles_id"
     t.index ["products_id"], name: "index_orders_on_products_id"
@@ -67,6 +76,7 @@ ActiveRecord::Schema.define(version: 20180225214139) do
     t.boolean "is_admin"
     t.string "password_digest"
     t.boolean "login_role"
+    t.boolean "active_user"
     t.index ["user_id"], name: "index_users_on_user_id", unique: true
   end
 

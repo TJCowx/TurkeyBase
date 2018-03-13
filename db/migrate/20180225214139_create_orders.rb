@@ -7,8 +7,8 @@ class CreateOrders < ActiveRecord::Migration[5.1]
         t.string :cust_phone
         t.string :order_requests
         t.boolean :picked_up
-        t.references :users, index: true
-        t.references :order_season_pickup_dates, index: true
+        t.references :users, type: :string
+        t.references :pickup_dates, index: true
         t.references :products, index:true
         t.references :product_styles, index: true
         t.references :product_sizes, index: true
