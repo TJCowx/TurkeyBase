@@ -25,6 +25,8 @@
           <center><h2><%= yield(:header)%></h2></center>
         </div>
         <%= yield %>
+        <button onclick="goToTop()" id="jumpTop" class="topButton"><span class="glyphicon glyphicon-arrow-up"></span></button>
+
     </div> <!-- /container.center -->
     <%= render 'layouts/footer' %>
   </body>
