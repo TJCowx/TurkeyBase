@@ -21,7 +21,15 @@ class OrderSeasonProductsController < ApplicationController
 
     # Removed the order season product
     def destroy
-        OrderSeasonProduct.find(params[:id]).destroy   # Deletes the product from the season
+        @product = OrderSeasonProduct.find(params[:id])
+        @product.destroy   # Deletes the product from the season
+
+        # Deletes any order with the product in this season
+        @orders = Order.find_by(products_id: @product.products_id, order_season_id: @product.order_seasons_id)
+        if @orders
+            @orders.destroy
+        end
+
         flash[:success] = "The product was successfully removed!"
         redirect_back fallback_location: '/order_season'
     end
