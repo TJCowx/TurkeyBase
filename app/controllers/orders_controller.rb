@@ -10,6 +10,11 @@ class OrdersController < ApplicationController
     def new
         # Create an empty order object for the form to use
         @order = Order.new
+        @season_products = OrderSeasonProduct.where(:order_seasons_id => current_season)
+        @products = Product.where(:product_id => @season_products.map(&:products_id)).order(:product_name)
+        # @season_products.each do |x|
+        #     @products = @products + Product.where(:product_id => x.products_id).all
+        # end
     end
 
     # Creates the order into the system

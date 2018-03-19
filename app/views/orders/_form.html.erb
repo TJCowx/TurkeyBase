@@ -31,14 +31,14 @@
         <div class="col-md-6">
             <%= f.label :product_id %>
             <%= f.collection_select :products_id,
-                Product.order(:product_name), :product_id, :product_name,
+                @products, :product_id, :product_name,
                 {include_blank: true}, {class: 'form-control'} %>
         </div>
         <!-- Product Size -->
         <div class='col-md-6'>
             <%= f.label :product_size_id, 'Size' %>
             <%= f.grouped_collection_select :product_sizes_id,
-                Product.order(:product_name), :product_sizes,
+                @products, :product_sizes,
                 :product_name, :product_size_id,:product_size_name,
                 {include_blank: true}, {class: 'form-control'} %>
         </div> <!-- End of Product Size -->
@@ -49,7 +49,7 @@
         <div class="col-md-6 col-md-offset-6">
             <%= f.label :product_style_id, 'Style' %>
             <%= f.grouped_collection_select :product_styles_id,
-                Product.order(:product_name), :product_styles,
+                @products, :product_styles,
                 :product_name, :product_style_id,:product_style_name,
                 {include_blank: true}, {class: 'form-control'} %>
         </div>
