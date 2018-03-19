@@ -14,7 +14,8 @@
         <%= x.product_size_name %>
         <span class="badge back-warning" style="vertical-align: middle;">
             <%= link_to "Delete", x, method: :delete,
-                data: {confirm:"Do you want to delete #{x.product_size_name}"},
+                data: {confirm:"Do you want to delete #{x.product_size_name}?
+                                <br/>This will delete all orders related to this size!"},
                 class: "back-warning" %>
         </span>
     </div>

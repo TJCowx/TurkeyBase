@@ -25,6 +25,7 @@ class OrderSeasonsController < ApplicationController
     def destroy
         # Get the user to be deleted
         OrderSeason.find(params[:id]).destroy
+
         flash[:success]= "Order season deleted"
         redirect_to order_seasons_url # Redirect the user back to the same page with a success message
     end

@@ -2,7 +2,8 @@
     <%= link_to product.product_name, edit_product_path(product) %>
     <span class="badge back-warning">
         <%= link_to "Delete", product, method: :delete,
-                    data: {confirm:"Do you want to delete #{product.product_name}"},
+                    data: {confirm:"Do you want to delete #{product.product_name}?
+                                    <br/>This will delete all orders related to this product!"},
                     class: "back-warning" %>
     </span>
 </li>

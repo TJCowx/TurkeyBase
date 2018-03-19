@@ -5,7 +5,8 @@
             <%= @product.product_name %>
             <span class="badge back-warning">
                 <%= link_to "Delete", season_product, method: :delete,
-                    data: {confirm:"Do you want to delete #{@product.product_name}"},
+                    data: {confirm:"Do you want to delete #{@product.product_name}?" +
+                                    "This will delete all orders related to this product permanently!"},
                     class: "back-warning" %>
             </span>
         </li>

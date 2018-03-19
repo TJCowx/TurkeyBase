@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    
+
   # Gets all the users into a list that aren't admins
   def index
     # Selects all non-admin login users
@@ -65,7 +65,10 @@ class UsersController < ApplicationController
   # For deleting a user
   def destroy
       # Get the user to be deleted
-      User.find(params[:id]).destroy
+      @user = User.find(params[:id])
+      @user.destroy
+      # Delete any orders with that user
+      Order.find_by(users_id: @user.user_id).destroy
       flash[:success]= "User deleted"
       redirect_to users_url # Redirect the user back to the same page with a success message
   end

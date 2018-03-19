@@ -8,7 +8,8 @@
         <% if !user.active_user? && !user.login_role %>
             <span class="badge back-warning">
                     <%= link_to "Delete", user, method: :delete,
-                                data: {confirm:"Do you want to delete #{user.user_id}"},
+                                data: {confirm:"Do you want to delete #{user.user_id}?"+
+                                "\nThis will delete all orders related to this user!"},
                                 class: "back-warning" %>
             </span>
             <% @enable = "Enable" %>

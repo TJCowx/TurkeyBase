@@ -27,6 +27,8 @@ class PickupDatesController < ApplicationController
     # Delete the pickup date from the table
     def destroy
         PickupDate.find(params[:id]).destroy     # Deletes the pickup date
+        Order.find_by(pickup_dates_id: params[:id]).destroy  # Destroy the order with the pickup dates
+
         # Show user success message, redirect back
         flash[:success] = "Pickup date successfully deleted!"
         redirect_back fallback_location: '/order_season'

@@ -8,7 +8,8 @@
         <% else %>
             <span class="badge back-warning">
                 <%= link_to "Delete", season, method: :delete,
-                            data: {confirm:"Do you want to delete #{season.order_season_name}"},
+                            data: {confirm:"Do you want to delete #{season.order_season_name}?<br/>
+                                            This will delete all orders related to this season!"},
                             class: "back-warning" %>
             </span>
         <% end %>

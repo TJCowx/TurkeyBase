@@ -1,5 +1,5 @@
 class ProductStylesController < ApplicationController
-    
+
     def create
         @product_style = ProductStyle.new(product_style_params)
 
@@ -26,9 +26,9 @@ class ProductStylesController < ApplicationController
     end
 
     def destroy
-        ProductStyle.find(params[:id]).destroy     # Deletes the pickup date
+        ProductStyle.find(params[:id]).destroy     # Deletes the style
         # Show user success message, redirect back
-        flash[:success] = "Size was successfully deleted!"
+        flash[:success] = "Style was successfully deleted!"
         redirect_back fallback_location: '/products'
     end
 

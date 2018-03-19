@@ -3,7 +3,8 @@
         <%= date.pickup_date  %>
         <span class="badge back-warning">
             <%= link_to "Delete", date, method: :delete,
-                data: {confirm:"Do you want to delete #{date.pickup_date}"},
+                data: {confirm:"Do you want to delete #{date.pickup_date}?" +
+                                "\nThis will delete all orders related to this pickup date!"},
                 class: "back-warning" %>
         </span>
     </li>

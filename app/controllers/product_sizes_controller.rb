@@ -25,7 +25,7 @@ class ProductSizesController < ApplicationController
     end
 
     def destroy
-        ProductSize.find(params[:id]).destroy     # Deletes the pickup date
+        ProductSize.find(params[:id]).destroy
         # Show user success message, redirect back
         flash[:success] = "Size was successfully deleted!"
         redirect_back fallback_location: '/products'
