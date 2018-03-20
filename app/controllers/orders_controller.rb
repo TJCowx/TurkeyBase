@@ -12,9 +12,6 @@ class OrdersController < ApplicationController
         @order = Order.new
         @season_products = OrderSeasonProduct.where(:order_seasons_id => current_season)
         @products = Product.where(:product_id => @season_products.map(&:products_id)).order(:product_name)
-        # @season_products.each do |x|
-        #     @products = @products + Product.where(:product_id => x.products_id).all
-        # end
     end
 
     # Creates the order into the system
@@ -33,6 +30,8 @@ class OrdersController < ApplicationController
     # Loads the Order into the fields for it to be updated
     def edit
         @order = Order.find(params[:id])
+        @season_products = OrderSeasonProduct.where(:order_seasons_id => current_season)
+        @products = Product.where(:product_id => @season_products.map(&:products_id)).order(:product_name)
     end
 
     # updates the order then redirects back
