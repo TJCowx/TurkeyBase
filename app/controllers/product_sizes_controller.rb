@@ -26,6 +26,7 @@ class ProductSizesController < ApplicationController
 
     def destroy
         ProductSize.find(params[:id]).destroy
+        Order.where(:product_sizes_id => params[:id]).delete_all
         # Show user success message, redirect back
         flash[:success] = "Size was successfully deleted!"
         redirect_back fallback_location: '/products'

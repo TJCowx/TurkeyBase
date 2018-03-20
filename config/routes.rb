@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     resources :users, except: [:new, :create, :toggle, :index]
     resources :order_seasons, except: [:new, :create]
     resources :pickup_dates, only: [:new, :create, :destroy]
-    resources :products, except: [:new, :create, :index]
+    resources :products, except: [:new]
     resources :product_sizes
     resources :product_styles
     resources :order_season_products

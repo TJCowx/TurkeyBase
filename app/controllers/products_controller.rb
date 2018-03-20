@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
                 :active_size => product_params[:select_size])
             @product_size.save
             flash[:success] = "#{@product.product_name} has been added"
-            redirect_to products_path
+            redirect_to edit_product_path(@product)
         else
             render 'new'
         end
@@ -43,9 +43,19 @@ class ProductsController < ApplicationController
         # Get the product to delete
         @product = Product.find(params[:id])
 
+
         # Delete the product with success message
         # Show error if it in't successful
         if @product.destroy
+            # Destroy all product sizes
+            ProductSize.where(:product_id => params[:id]).delete_all
+            # Destroy all product styles
+            ProductStyle.where(:product_id => params[:id]).delete_all
+            # Destroy all orders related to the product
+            Order.where(:products_id => params[:id]).delete_all
+            # Destroy all order season products
+            OrderSeasonProduct.where(:products_id => params[:id]).delete_all
+
             flash[:success] = "#{@product.product_name} successfully deleted"
             redirect_to products_path
         else

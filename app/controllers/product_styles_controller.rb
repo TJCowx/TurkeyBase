@@ -27,6 +27,7 @@ class ProductStylesController < ApplicationController
 
     def destroy
         ProductStyle.find(params[:id]).destroy     # Deletes the style
+        Order.where(:product_styles_id => params[:id]).delete_all
         # Show user success message, redirect back
         flash[:success] = "Style was successfully deleted!"
         redirect_back fallback_location: '/products'
