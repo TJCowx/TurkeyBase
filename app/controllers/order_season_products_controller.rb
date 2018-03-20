@@ -25,10 +25,7 @@ class OrderSeasonProductsController < ApplicationController
         @product.destroy   # Deletes the product from the season
 
         # Deletes any order with the product in this season
-        @orders = Order.find_by(products_id: @product.products_id, order_season_id: @product.order_seasons_id)
-        if @orders
-            @orders.destroy_all
-        end
+        Order.where(:products_id => @product.products_id, :order_season_id => @product.order_seasons_id).delete_all
 
         flash[:success] = "The product was successfully removed!"
         redirect_back fallback_location: '/order_season'

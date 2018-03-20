@@ -17,6 +17,8 @@ class OrdersController < ApplicationController
     # Creates the order into the system
     # Then redirects to another new order page
     def create
+        @season_products = OrderSeasonProduct.where(:order_seasons_id => current_season)
+        @products = Product.where(:product_id => @season_products.map(&:products_id)).order(:product_name)
         @order = Order.new(order_params)
         @order.picked_up = false    # Set the picked up to false when created
         if @order.save
@@ -36,6 +38,8 @@ class OrdersController < ApplicationController
 
     # updates the order then redirects back
     def update
+        @season_products = OrderSeasonProduct.where(:order_seasons_id => current_season)
+        @products = Product.where(:product_id => @season_products.map(&:products_id)).order(:product_name)
         @order = Order.find(params[:id])
 
         # Update the attributes, redirect with success, show errors
