@@ -26,6 +26,8 @@ class OrderSeasonsController < ApplicationController
     def destroy
         # Get the user to be deleted
         OrderSeason.find(params[:id]).destroy
+        # Deletes all pickup dates
+        PickupDate.find_by(order_season_id: params[:id]).destroy_all
 
         flash[:success]= "Order season deleted"
         redirect_to order_seasons_url # Redirect the user back to the same page with a success message

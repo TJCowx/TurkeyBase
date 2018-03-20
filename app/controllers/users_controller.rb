@@ -68,7 +68,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       @user.destroy
       # Delete any orders with that user
-      Order.find_by(users_id: @user.user_id).destroy
+      Order.where(:users_id => @user.user_id).delete_all
       flash[:success]= "User deleted"
       redirect_to users_url # Redirect the user back to the same page with a success message
   end

@@ -27,7 +27,7 @@ class OrderSeasonProductsController < ApplicationController
         # Deletes any order with the product in this season
         @orders = Order.find_by(products_id: @product.products_id, order_season_id: @product.order_seasons_id)
         if @orders
-            @orders.destroy
+            @orders.destroy_all
         end
 
         flash[:success] = "The product was successfully removed!"
