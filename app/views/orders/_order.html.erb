@@ -8,9 +8,12 @@
     <td><%= PickupDate.where(:pickup_date_id => order.pickup_dates_id).pluck(:pickup_date).first %></td>
     <td>
         <%= link_to order, method: :cust_picked_up do %>
-        <span class="badge <%= 'background-color' if order.picked_up %>">
-            <%= order.picked_up ? 'Picked Up' : "Ordered" %>
-        </span>
+            <span class="badge <%= 'background-color' if order.picked_up %>">
+                <%= order.picked_up ? 'Picked Up' : "Ordered" %>
+            </span>
+        <% end %>
+        <% if order.order_requests.length > 0 %>
+            <span class='glyphicon glyphicon-bell' style='color:#ff0000;' title="<%= order.order_requests%>"></span>
         <% end %>
     </td>
     <td><%= link_to 'Manage', edit_order_path(order) %></td>

@@ -46,7 +46,7 @@ gem 'jquery-ui-rails'
 # For the date picker
 gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
                               :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
-
+gem 'bootstrap-tooltip-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
