@@ -58,6 +58,7 @@
 <hr/>
 <h3>Dates</h3>
 <div class="row">
-    <%= render :partial => '/orders/date_order_details' %>
+    <%= render :partial => '/orders/date_order_details',
+        :locals => {:product => @product_orders}%>
 </div>
 <hr/>
