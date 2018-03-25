@@ -6,13 +6,13 @@
 
     <!-- User ID field -->
     <div class="form-group">
-        <%= f.label :user_id, 'Username' %>
+        <%= f.label :user_id, 'Username' %> <span style="color: red;">*</span>
         <%= f.text_field :user_id, class: "form-control", placeholder: "Username" %>
     </div>
 
     <!-- Password field -->
     <div class="form-group">
-      <%= f.label :password %>
+      <%= f.label :password %> <span style="color: red;">*</span>
       <%=
         f.password_field :password, class: "form-control",
         placeholder: "Password"
@@ -20,7 +20,7 @@
     </div>
     <!-- Password field -->
     <div class="form-group">
-        <%= f.label :password_confirmation, 'Confirm Password' %>
+        <%= f.label :password_confirmation, 'Confirm Password' %> <span style="color: red;">*</span>
         <%=
             f.password_field :password_confirmation, class: "form-control",
             placeholder: "Confirm Password"
@@ -44,4 +44,5 @@
     <%=
         f.submit yield(:button_text), class: "btn btn-success submit-style"
     %>
+    <span style="color: red;">* - Required</span>
 <% end %>

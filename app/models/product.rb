@@ -1,9 +1,10 @@
 class Product < ApplicationRecord
-    has_many :product_sizes
-    has_many :product_styles
+    has_many :product_sizes, -> {ProductSize.where(:active_size => true)}
+    has_many :product_styles, -> {ProductStyle.where(:active_style => true)}
     # For the size & style sub-forms
     accepts_nested_attributes_for :product_sizes
     accepts_nested_attributes_for :product_styles
+
     # Custom Fields
     attr_accessor :size, :style, :select_size, :select_style
 

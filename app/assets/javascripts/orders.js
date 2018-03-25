@@ -37,8 +37,8 @@ jQuery(function() {
             $('#order_product_sizes_id').html(size_options);
             $('#order_product_sizes_id').prop('disabled', false);
         }else {
-            $('#order_product_sizes_id').empty();
-            $('#order_product_sizes_id').prop('disabled', true);
+            $('#order_product_size_id').empty();
+            $('#order_product_size_id').prop('disabled', true);
         }
 
         // If there is style options fill the select box

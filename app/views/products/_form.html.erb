@@ -4,21 +4,21 @@
     <div class="row">
         <div class="col-md-7 col-md-offset-2">
             <div class="form-group">
-                <%= f.label :product_name, 'Product Name' %>
+                <%= f.label :product_name, 'Product Name' %> <span style="color: red;">*</span>
                 <%= f.text_field :product_name, class: 'form-control', placeholder: "Product Name" %>
             </div>
 
             <%=
                 f.submit yield(:button_text), class: 'btn btn-success submit-style'
             %>
-
+            <span style="color: red;">* - Required</span>
         </div>
     </div>
 
     <div class="row">
         <div id='size' class="col-md-6" style="padding-right: 30px;">
             <div class="page-header">
-                <center><h4>Product Sizes</h4></center>
+                <center><h4>Product Sizes <span style="color: red;">*</span></h4></center>
             </div>
             <% if @product.new_record? %>
                 <div class="form-group">
@@ -36,7 +36,7 @@
 
         <div id='style' class="col-md-6" style="padding-right: 30px;">
             <div class="page-header">
-                <center><h4>Product Styles</h4></center>
+                <center><h4>Product Styles <span style="color: red;">*</span></h4> </center>
             </div>
             <% if @product.new_record? %>
                 <div class="form-group">

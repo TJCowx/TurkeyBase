@@ -6,7 +6,7 @@
 
     <!-- Name Field -->
     <div class="form-group">
-        <%= f.label :order_season_name, 'Order Season\'s Name' %>
+        <%= f.label :order_season_name, 'Order Season\'s Name' %> <span style="color: red;">*</span>
         <%= f.text_field :order_season_name, class: "form-control",
             placeholder: "Order Season Name" %>
     </div>
@@ -14,10 +14,10 @@
     <!-- Range Picker -->
     <div class="form-inline">
         <%= f.label :pickup_date_start, 'Start' %> &nbsp;<span class="glyphicon glyphicon-calendar"><div class="hidden-text">Date</div></span>
-        <%= f.date_field :pickup_date_start %>
+        <%= f.date_field :pickup_date_start %> <span style="color: red;">*</span>
         &nbsp;
         <%= f.label :pickup_date_end, 'End' %> &nbsp;<span class="glyphicon glyphicon-calendar"><div class="hidden-text">Date</div></span>
-        <%= f.date_field :pickup_date_end %>
+        <%= f.date_field :pickup_date_end %> <span style="color: red;">*</span>
     </div>
     <br/>
     <!-- Choose to set it as active order season -->
@@ -31,4 +31,7 @@
     </div>
     <br/>
     <%= f.submit yield(:button_text), class: "btn btn-success submit-style" %>
+    <div class='col-md-12'>
+        <span style="color: red;">* - Required</span>
+    </div>
 <% end %>
