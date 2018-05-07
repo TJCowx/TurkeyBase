@@ -121,7 +121,7 @@ class OrderSeasonsController < ApplicationController
         # Get all the orders in the current selected season
         @orders = Order.where(:order_season_id => params[:id])
         # Get all the products
-        @season_products = OrderSeasonProduct.where(:order_seasons_id => current_season)
+        @season_products = OrderSeasonProduct.where(:order_seasons_id => params[:id])
         @product_orders = Product.where(:product_id => @season_products.map(&:products_id)).order(:product_name)
         # Get all the dates within the order season
         @dates = PickupDate.where(:order_season_id => params[:id])
