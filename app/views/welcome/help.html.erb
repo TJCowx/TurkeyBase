@@ -1,0 +1,636 @@
+<% provide(:title, "Help Menu") %>
+<% provide(:header, 'Help Menu') %>
+
+<h3>Navigation</h3>
+<ol class="help-menu" style="width:50%;">
+    <li>
+        <a href="#orders-help">Orders</a>
+        <ul>
+            <a href="#new-order"><li>New Order</li></a>
+            <a href="#edit-order"><li>Edit Order</li></a>
+            <a href="#manage-orders"><li>Manage Orders</li></a>
+        </ul>
+    </li>
+    <% if admin? %>
+        <!-- Admin only pages -->
+        <li><a href="#order-season">Order Seasons</a>
+            <ul>
+                <a href="#new-season"><li>Add an Order Season</li></a>
+                <a href="#edit-season"><li>Edit an Order Season</li></a>
+                <a href="#manage-seasons"><li>Manage Order Seasons</li></a>
+            </ul>
+        </li>
+        <li><a href="#products">Products</a>
+            <ul>
+                <a href="#new-product"><li>Add a Products</li></a>
+                <a href="#edit-product"><li>Edit a Product</li></a>
+                <a href="#manage-products"><li>Manage Products</li></a>
+            </ul>
+        </li>
+        <li><a href="#users">Users</a>
+            <ul>
+                <a href="#new-user"><li>Add a User</li></a>
+                <a href="#edit-user"><li>Edit a User</li></a>
+                <a href="#manage-users"><li>Manage Users</li></a>
+            </ul>
+        </li>
+    <% end %>
+    <li>
+        <a href="#contact">Contact</a>
+    </li>
+</ol>
+<hr/>
+<div id="orders-help">
+    <h2>Orders</h2>
+    The orders selections are how you manage the orders you have recieved. Here you can do many things, such as creating an order,
+    editing, deleting an order, and setting their status. This is the part of the TurkeyBase that you will be using the most. Each order
+    is tied to an <a href="#order-season">order season</a>.
+    <br/><br/>
+    <div id="new-order">
+        <h3>New Order</h3>
+        <img src="/New_Order.png" />
+        <dl>
+            <dt>1. Order Season Name</dt>
+            <dd>
+                This is the name of the current active order season. The order will be placed into this order season.
+                <br/><br/>
+            </dd>
+            <dt>2. Customer First Name</dt>
+            <dd>
+                The first name of the customer on the order. This is a required field.
+                <br/><br/>
+            </dd>
+            <dt>3. Customer Last Name</dt>
+            <dd>
+                The last name of the customer on the order. This is a required field.
+                <br/><br/>
+            </dd>
+            <dt>4. Customer Phone Number</dt>
+            <dd>
+                The customer's phone number on the order. Use only the number for the phone (Eg. 9054761234 instead
+                of (905)476-1234).This is a required field.
+                <br/><br/>
+            </dd>
+            <dt>5. Order Product</dt>
+            <dd>
+                The product that the customer is ordering. Dropdown menu with products that are in the active
+                ordering season. This is a required field.
+                <br/><br/>
+            </dd>
+            <dt>6. Order Product Size</dt>
+            <dd>
+                The size of the product that the customer is ordering. The selectable objects are dependent on
+                what product you have chosen. This is a required field.
+                <br/><br/>
+            </dd>
+            <dt>7. Order Product Style</dt>
+            <dd>
+                The style of the product that the customer is ordering. The selectable objects are dependent on
+                what product you have chosen. This is a required field.
+                <br/><br/>
+            </dd>
+            <dt>8. Order Pickup Date</dt>
+            <dd>
+                The date that the order is to be picked up. A list of dates that are tied to the active ordering
+                season. This is a required field.
+                <br/><br/>
+            </dd>
+            <dt>9. Special Requests</dt>
+            <dd>
+                This field is for any special requests that cannot be fill by selecting one of the styles in the dropdown
+                menu.
+                <br/><br/>
+            </dd>
+            <dt>10. Employee</dt>
+            <dd>
+                The employee that is taking the order. This is populated by the sales employees. If your name is not on
+                this list, please contact your manager who handles the administration of your TurkeyBase system. This
+                field is required.
+                <br/><br/>
+            </dd>
+            <dt>11. Save Order</dt>
+            <dd>
+                Once you confirm your order with the customer, click this to save the order in the TurkeyBase. If anything
+                isn't valid you will be notified of the errors before you can save it.
+            </dd>
+        </dl>
+    </div>
+    <br/><br/>
+    <div id="edit-order">
+        <h3>Edit Order</h3>
+        <img src="/Edit_Order.png" />
+        <dl>
+            <dt>1. Customer First Name</dt>
+            <dd>
+                The first name of the customer on the order. This is a required field.
+                <br/><br/>
+            </dd>
+            <dt>2. Customer Last Name</dt>
+            <dd>
+                The last name of the customer on the order. This is a required field.
+                <br/><br/>
+            </dd>
+            <dt>3. Customer Phone Number</dt>
+            <dd>
+                The customer's phone number on the order. Use only the number for the phone (Eg. 9054761234 instead
+                of (905)476-1234).This is a required field.
+                <br/><br/>
+            </dd>
+            <dt>4. Order Product</dt>
+            <dd>
+                The product that the customer is ordering. Dropdown menu with products that are in the active
+                ordering season. This is a required field.
+                <br/><br/>
+            </dd>
+            <dt>5. Order Product Size</dt>
+            <dd>
+                The size of the product that the customer is ordering. The selectable objects are dependent on
+                what product you have chosen. This is a required field.
+                <br/><br/>
+            </dd>
+            <dt>6. Order Product Style</dt>
+            <dd>
+                The style of the product that the customer is ordering. The selectable objects are dependent on
+                what product you have chosen. This is a required field.
+                <br/><br/>
+            </dd>
+            <dt>7. Order Pickup Date</dt>
+            <dd>
+                The date that the order is to be picked up. A list of dates that are tied to the active ordering
+                season. This is a required field.
+                <br/><br/>
+            </dd>
+            <dt>8. Special Requests</dt>
+            <dd>
+                This field is for any special requests that cannot be fill by selecting one of the styles in the dropdown
+                menu.
+                <br/><br/>
+            </dd>
+            <dt>9. Employee</dt>
+            <dd>
+                The employee that is taking the order. This is populated by the sales employees. If your name is not on
+                this list, please contact your manager who handles the administration of your TurkeyBase system. This
+                field is required.
+                <br/><br/>
+            </dd>
+            <dt>10. Save Order</dt>
+            <dd>
+                Once you confirm your order with the customer, click this to save the order in the TurkeyBase. If anything
+                isn't valid you will be notified of the errors before you can save it.
+                <br/><br/>
+            </dd>
+            <dt>11. Delete Order</dt>
+            <dd>
+                Click this is permanently delete the order. <strong>THIS ACTION IS IRRIVERSABLE!</strong>
+            </dd>
+        </dl>
+    </div>
+    <br/><br/>
+    <div id="manage-orders">
+        <h3>Manage Orders</h3>
+        <img src="/Manage_Orders.png" />
+        <dl>
+            <dt>1. Order Season</dt>
+            <dd>
+                The order season to display the list of orders for. Defaults to the active season. Selecting another
+                order season in the drop down menu will swap to that order season.
+                <br/><br/>
+            </dd>
+            <dt>2. Number of Orders to Show</dt>
+            <dd>
+                Select how many orders you would like to show at one time. Defaults to 10.
+                <br/><br/>
+            </dd>
+            <dt>3. Search for Orders</dt>
+            <dd>
+                Use this to search for orders. Any field is searchable.
+                <br/><br/>
+            </dd>
+            <dt>4. List of Orders</dt>
+            <dd>
+                A list of orders for the currently selected order season.
+                <br/><br/>
+            </dd>
+            <dt>5. Order Status</dt>
+            <dd>
+                The status of the order, can either be "picked up" or "ordered". If you click on the status, it will
+                change to the other status.
+                <br/><br/>
+            </dd>
+            <dt>6. Special Request Notification</dt>
+            <dd>
+                Notification that only shows up on orders with a special request. If you hover over this you can see
+                the request. You can also go into the edit screen for that order to view the special request.
+                <br/><br/>
+            </dd>
+            <dt>7. Edit Order</dt>
+            <dd>
+                Click this to be redirected to the <a href="#edit-order">edit order</a> screen.
+                <br/><br/>
+            </dd>
+            <dt>8. Running Totals: Total, Sizes, Styles</dt>
+            <dd>
+                A running total of the product. A list gets created for each product in the order season. Shows the total of that product
+                order, and breaks it down by sizes & styles as well.
+                <br/><br/>
+            </dd>
+            <dt>9. Running Totals: Dates</dt>
+            <dd>
+                A running total of the product order statuses. Shows how many have been ordered, picked up, and remaining for
+                each day. A list gets created for each product in the order season.
+            </dd>
+        </dl>
+    </div>
+</div>
+<% if admin? %>
+    <hr/>
+    <div id="order-season">
+        <h2>Order Seasons</h2>
+        The order season is how you can track the orders on specific seasons, for example: Thanksgiving 2018. Only one season is active
+        at a time, and orders are automatically placed in that active season. You have to select which <a href="#products">products</a>
+        you would like in that season. Pickup dates are tied to your order season. If you delete an order season, all orders that are
+        in that season will be lost.
+        <br/><br/>
+        <div id="new-season">
+            <h3>New Order Season</h3>
+            <img src="/New_Season.png" />
+            <dl>
+                <dt>1. Order Season Name</dt>
+                <dd>
+                    The name of the new order season. This field is required.
+                    <br/><br/>
+                </dd>
+                <dt>2. Start & End Date for the Order Season</dt>
+                <dd>
+                    Date pickers for the start and end date for the order season. The TurkeyBase will create pickup dates for this
+                    order season within the dates that you have selected. These fields are required.
+                    <br/><br/>
+                </dd>
+                <dt>3. Active Ordering Season</dt>
+                <dd>
+                    Select this box to make your new season the active order season. This will make any currently active order
+                    season become unactive.
+                    <br/><br/>
+                </dd>
+                <dt>4. Save Order Season</dt>
+                <dd>
+                    Click this to save your order season. You must first have selected a start and end date.
+                    You will be redirected to the <a href="#edit-season">edit order season</a> page once it saves
+                    successfully.
+                </dd>
+            </dl>
+        </div>
+        <br/><br/>
+        <div id="edit-season">
+            <h3>Edit Order Season</h3>
+            <img src="/Edit_Season.png" />
+            <dl>
+                <dt>1. Order Season Name</dt>
+                <dd>
+                    The name of the order season.
+                    <br/><br/>
+                </dd>
+                <dt>2. Active Ordering Season</dt>
+                <dd>
+                    Select this is make the season the active one. This will unselect the current active season automatically.
+                    <br/><br/>
+                </dd>
+                <dt>3. Save Order Season</dt>
+                <dd>
+                    Saves the order season. You must first save your order season name and changes to the active order season
+                    before you add a pickup date or a product, otherwise your changes will be lost.
+                    <br/><br/>
+                </dd>
+                <dt>4. Show Pickup Date Picker</dt>
+                <dd>
+                    Shows the date picker to add a new pickup date.
+                    <br/><br/>
+                </dd>
+                <dt>5. Pickup Date List</dt>
+                <dd>
+                    A list of pickup dates that are in the season. Deleting one will remove all orders with that pickup date.
+                    <br/><br/>
+                </dd>
+                <dt>6. Product Dropdown</dt>
+                <dd>
+                    A dropdown list of all products that aren't currently in the order season. This menu shows when you click
+                    the product equivalent of the #4 option on this menu.
+                    <br/><br/>
+                </dd>
+                <dt>7. Add a Product</dt>
+                <dd>
+                    Add the selected product to the order season. This makes is so product is selectable in the order menu.
+                    <br/><br/>
+                </dd>
+                <dt>8. Delete a Product From the Season</dt>
+                <dd>
+                    This removes a product from a season. This won't remove any orders that have selected that product
+                    in the season. Deleting the product just makes the product non-selectable in the order menu.
+                </dd>
+            </dl>
+        </div>
+        <br/><br/>
+        <div id="manage-seasons">
+            <h3>Manage Order Seasons</h3>
+            <img src="/Manage_Seasons.png"/>
+            <dl>
+                <dt>1. Order Season</dt>
+                <dd>
+                    The name of an order season. Click this to edit the order season.
+                    <br/><br/>
+                </dd>
+                <dt>2. Active Order Season</dt>
+                <dd>
+                    Denotes your current active order season.
+                    <br/><br/>
+                </dd>
+                <dt>3. List of Order Seasons</dt>
+                <dd>
+                    A list of all your order seasons. The active season will automatically be at the top of the list.
+                    Otherwise they are sorted alphabetically.
+                    <br/><br/>
+                </dd>
+                <dt>4. Delete Order Season</dt>
+                <dd>
+                    This permanently deletes the order season. This will delete anything that is related to the order season.
+                    <strong>THIS ACTION IS IRRIVERSABLE!</strong>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <hr/>
+    <div id="products">
+        <h2>Products</h2>
+        Products as the products that are offered from your establishment. They get chosen by an <a href="#order-season">order season</a>
+        to be able to be picked for an <a href="orders-help">order</a> within that season. If you delete a product, you will lose any
+        orders that are related to that product.
+        <div id="new-product">
+            <h3>New Product</h3>
+            <img src="/new_product.png" />
+            <dl>
+                <dt>1. Product Name</dt>
+                <dd>
+                    The name of the product that you are adding.
+                    <br/><br/>
+                </dd>
+                <dt>2. Save Product</dt>
+                <dd>
+                    Click this to save your product. You must first have a size & style added in the
+                    boxes below. You will be redirected to the <a href="#edit-product">edit product</a>
+                    page once it saves successfully.
+                    <br/><br/>
+                </dd>
+                <dt>3. Enable Size</dt>
+                <dd>
+                    Select this to have your size selectable in the drop down menu when placing an
+                    order.
+                    <br/><br/>
+                </dd>
+                <dt>4. Size Name</dt>
+                <dd>
+                    The name of the first size that you are adding to the product. This is a required field.
+                    <br/><br/>
+                </dd>
+                <dt>5. Enable Style</dt>
+                <dd>
+                    Select this to have your style selectable in the drop down menu when placing an
+                    order.
+                    <br/><br/>
+                </dd>
+                <dt>6. Style Name</dt>
+                <dd>
+                    The name of the first style that you are adding to your product. This is a required field
+                </dd>
+            </dl>
+        </div>
+        <br/><br/>
+        <div id="edit-product">
+            <h3>Edit Product</h3>
+            <img src="/Edit_Product.png"></img>
+            <dl>
+                <dt>1. Product Name</dt>
+                <dd>
+                    The name of the product that you are editing.<br/><br/>
+                </dd>
+                <dt>2. Update Product</dt>
+                <dd>
+                    When you click this button, it will update the product name.<br/><br/>
+                </dd>
+                <dt>3. Enable New Product Size</dt>
+                <dd>
+                    Check this box to have a new size be enabled by default. This does the same thing
+                    for style in its new style field.<br/><br/>
+                </dd>
+                <dt>4. New Product Size Name</dt>
+                <dd>
+                    This is the name of the new size for your product. This is the same for adding a new style in
+                    its new style field.<br/><br/>
+                </dd>
+                <dt>5. Add New Product Size</dt>
+                <dd>
+                    Clicking this will add the new size to the product. You must first save your changes to the
+                    product name if you have made any before you add a new size/style or your changes will be
+                    lost.<br/><br/>
+                </dd>
+                <dt>6. List of Styles</dt>
+                <dd>
+                    This is a list of styles for your product. Sizes have their list on their side.<br/><br/>
+                </dd>
+                <dt>7. Toggle Style Selectable</dt>
+                <dd>
+                    Clicking this enables or disables the style(does the same thing for size). Having it enabled
+                    means it is selectable in the orders dropdown menu. Disabled makes it unselectable in the orders
+                    dropdown menu.<br/><br/>
+                </dd>
+                <dt>8. Delete Style</dt>
+                <dd>
+                    This deletes the style(does the same thing for size). It is recommended that you don't delete the
+                    style or the size, instead just disabling it so you won't lose any orders that are related to the
+                    size or style.
+                </dd>
+            </dl>
+        </div>
+        <br/><br/>
+        <div id="manage-products">
+            <h3>Manage Product</h3>
+            <img src="/manage_products.png" />
+            <dl>
+                <dt>1. List of Products</dt>
+                <dd>
+                    This is a list of products that you have added in the TurkeyBase.
+                    <br/><br/>
+                </dd>
+                <dt>2. Product Name</dt>
+                <dd>
+                    This is the name of a product. If you click this you will be redirected to the page to edit
+                    your product.
+                    <br/><br/>
+                </dd>
+                <dt>3. Delete Product</dt>
+                <dd>
+                    Click this to delete your product. It is recommended that you not delete your product. Any
+                    orders that were made with the product will also be removed.
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <hr/>
+    <div id="users">
+        <h2>Users</h2>
+        There are 4 types of users:
+        <br/><br/>
+        <dl class="dl-horizontal">
+            <dt>Admins</dt>
+            <dd>
+                Able to access the entire system. They can manage
+                the orders, order seasons, products, and users. It is suggested that you only have one admin account.
+            </dd>
+            <dt>Login Role</dt>
+            <dd>
+                Login role users are your general user. These users log into your system and have the ability to
+                manage your orders, including adding, editing, and deleting. They have access to no other part of
+                the system.
+            </dd>
+            <dt>Sales</dt>
+            <dd>
+                Sales users don't have the ability to log in. They are the users that are available in the dropdown list when
+                you are placing an <a href="#new-order">order</a>.
+            </dd>
+            <dt>Disabled</dt>
+            <dd>
+                It is recommended that you just disable a user without deleting them once you don't want them to have a role.
+                This is so there is no <a href="http://database.guide/what-is-an-orphaned-record/">orphaned data</a>. If you delete
+                a user, any orders that are related to that will also be deleted so no orphaned data is left.
+            </dd>
+        </dl>
+        <br/><br/>
+        <div id="new-user">
+            <h3>New User</h3>
+            <img src="/New_User.png"/>
+            <dl>
+                <dt>1. Username</dt>
+                <dd>
+                    The username for the user. If it's a sales user, this is what will appear in the dropdown menu in the order
+                    menu.
+                    <br/><br/>
+                </dd>
+                <dt>2. Password</dt>
+                <dd>
+                    The password for the user.
+                    <br/><br/>
+                </dd>
+                <dt>3. Confirm Password</dt>
+                <dd>
+                    The password confirmation for the user. It must match the password
+                    <br/><br/>
+                </dd>
+                <dt>4. Admin Role</dt>
+                <dd>
+                    Check this box if the user is to be an admin. Checking this automatically checks the login role box.
+                    <br/><br/>
+                </dd>
+                <dt>5. Login Role</dt>
+                <dd>
+                    Check this if the user is used to log in. Users with this role won't show up in the order menu.
+                    <br/><br/>
+                </dd>
+                <dt>6. Save User</dt>
+                <dd>
+                    Save the user. If any errors are present you will be notified.
+                </dd>
+            </dl>
+        </div>
+        <br/><br/>
+        <div id="edit-user">
+            <h3>Edit User</h3>
+            <img src="/Edit_User.png"/>
+            <dl>
+                <dt>1. Username</dt>
+                <dd>
+                    The username for the user. If it's a sales user, this is what will appear in the dropdown menu in the order
+                    menu.
+                    <br/><br/>
+                </dd>
+                <dt>2. Password</dt>
+                <dd>
+                    The password for the user. If you are not changing the password, leave this field blank.
+                    <br/><br/>
+                </dd>
+                <dt>3. Confirm Password</dt>
+                <dd>
+                    The password confirmation for the user. It must match the password. Leave this field blank if you are not
+                    changing the password.
+                    <br/><br/>
+                </dd>
+                <dt>4. Admin Role</dt>
+                <dd>
+                    Check this box if the user is to be an admin. Checking this automatically checks the login role box.
+                    <br/><br/>
+                </dd>
+                <dt>5. Login Role</dt>
+                <dd>
+                    Check this if the user is used to log in. Users with this role won't show up in the order menu.
+                    <br/><br/>
+                </dd>
+                <dt>6. Save User</dt>
+                <dd>
+                    Save the user. If any errors are present you will be notified.
+                </dd>
+            </dl>
+        </div>
+        <br/><br/>
+        <div id="manage-users">
+            <h3>Manage Users</h3>
+            <img src="/Manage_Users.png"/>
+            <dl>
+                <dt>1. Login Users List</dt>
+                <dd>
+                    A list of users who are active with the login role. These users are only used to login. They only have
+                    permissions to access the management of orders.
+                    <br/><br/>
+                </dd>
+                <dt>2. Sales Users List</dt>
+                <dd>
+                    A list of active users who will appear in the employee dropdown list in the new order menu.
+                    <br/><br/>
+                </dd>
+                <dt>3. Disabled Users List</dt>
+                <dd>
+                    A list of disabled users. These users have no access to the system, nor do they appear in any dropdown lists.
+                    <br/><br/>
+                </dd>
+                <dt>4. Edit User</dt>
+                <dd>
+                    Click this to <a href="#edit-user">edit a user</a>.
+                    <br/><br/>
+                </dd>
+                <dt>5. Disable User</dt>
+                <dd>
+                    Clicking this will disable the user and send them to the disabled users list.
+                    <br/><br/>
+                </dd>
+                <dt>6. Delete User</dt>
+                <dd>
+                    This is only available for disabled users. <strong>THIS ACTION IS IRRIVERSABLE!</strong>
+                    It is recommended that you just leave the users disabled, otherwise deleting a user will remove any orders
+                    that are related to that user.
+                    <br/><br/>
+                </dd>
+                <dt>7. Enable User</dt>
+                <dd>
+                    This re-enables the user. It moves them back to either their login role or sales role, depending on what their
+                    role was before they were disabled.
+                    <br/><br/>
+                </dd>
+            </dl>
+        </div>
+    </div>
+<% end %>
+<hr/>
+<div id="contact">
+    <h2>Contact</h2>
+    <p>For any more assistance, or there is an issue to report.
+        Please contact me at tcowx21@gmail.com.
+    </p>
+    <br/><br/><br/>
+</div>

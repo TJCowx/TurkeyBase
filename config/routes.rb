@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     # Home page
     root    'welcome#index'
     get     '/home', to: 'welcome#index'
+    get     '/help', to: 'welcome#help'
     # Login and Logout
     get     '/login', to: 'sessions#new'
     post    '/login', to: 'sessions#create'

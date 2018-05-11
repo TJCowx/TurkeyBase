@@ -107,3 +107,11 @@
 .border-between > [class*='col-']:first-child:before {
    display: none;
 }
+
+.help-menu {
+    background-color: #f8f9fa;
+    border: 1px solid #a2a9b1;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
